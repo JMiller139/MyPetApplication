@@ -14,7 +14,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signinClicked(View v){
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, MainScreenActivity.class);
+        startActivity(intent);
     }
 
     public void registerClicked(View v){
