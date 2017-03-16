@@ -18,7 +18,7 @@
     <string name="createAnAccountTitle">Create an Account</string>
     <string name="userNameTextView">Username:</string>
     <string name="emailTextView">Email:</string>
-    <string name="confirmEmailTextView">Confirm Email:</string>
+    <string name="confirmEmialTextView">Confirm Email:</string>
     <string name="passwordTextView">Password:</string>
     <string name="confirmPasswordTextView">Confirm Password:</string>
     <string name="createAccountButtonText">Create Account</string>
@@ -30,5 +30,6 @@
     <string name="action_settings">Settings</string>
     <string name="emailPlaceHldr">Email@domain.com</string>
     <string name="passwordPlacehldr">Password</string>
-    <string name="emailPlacehldr">Stacys Email</string>
+    <string name="emailPlacehldr">Email</string>
+    <string name="jonathansName">Jonathan</string>
 </resources>
