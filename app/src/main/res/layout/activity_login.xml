@@ -72,18 +72,18 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="190dp"
-        android:layout_height="82dp"
-        app:srcCompat="@drawable/mypetLogo"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+        android:id="@+id/imageView5"
+        android:layout_width="207dp"
+        android:layout_height="81dp"
+        app:srcCompat="@drawable/mypetlogo"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailEditText" />
 
 
 </android.support.constraint.ConstraintLayout>
