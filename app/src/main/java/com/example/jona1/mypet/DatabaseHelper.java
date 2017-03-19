@@ -1,5 +1,6 @@
 package com.example.jona1.mypet;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,12 +16,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_UNAME = "uname";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASS = "pass";
-
+    SQLiteDatabase db;
     private static final String TABLE_CREATE = "create table users " +
             "( id integer primary key not null auto_increment, " +
             "name text not null, email text not null, uname text not null," +
             "pass text not null);";
-    private SQLiteDatabase db;
+
 
     public DatabaseHelper (Context context)
     {
@@ -35,6 +36,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.db = db;
     }
 
+   /* public void insertContact(Contact c)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_UNAME, c.getUname());
+        values.put(COLUMN_EMAIL, c.getEmail());
+        values.put(COLUMN_PASS, c.getPass());
+
+        db.insert(TABLE_NAME, null, values);
+    }
+    */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXIST" + TABLE_NAME;

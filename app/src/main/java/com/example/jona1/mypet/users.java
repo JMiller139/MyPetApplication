@@ -4,7 +4,7 @@ package com.example.jona1.mypet;
 
 public class users {
     int id;
-    String name, email, uname, pass;
+    String uname, email, pass;
 
     public void setId(int id)
 
@@ -17,14 +17,8 @@ public class users {
         return this.id;
     }
 
-    public void setUname (String uname)
-    {
-        this.uname = uname;
-    }
-    public String getUname()
-    {
-        return this.uname;
-    }
+    public void setUname (String uname) { this.uname = uname;}
+    public String getUname() {return this.uname;}
 
     public void setEmail (String email)
     {
@@ -44,5 +38,6 @@ public class users {
     {
         return this.pass;
     }
+
 
 }

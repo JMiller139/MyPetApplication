@@ -32,4 +32,6 @@
     <string name="passwordPlacehldr">Password</string>
     <string name="emailPlacehldr">Email</string>
     <string name="jonathansName">Mickey</string>
+    <string name="username">username</string>
+    <string name="emptyString" />
 </resources>

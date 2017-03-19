@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 public class RegisterAccountActivity extends AppCompatActivity {
 
+    DatabaseHelper helper = new DatabaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,14 @@ public class RegisterAccountActivity extends AppCompatActivity {
             String pass1str = pass1.getText().toString();
             String pass2str = pass2.getText().toString();
 
+            if(!email1str.equals(email2str))
+            {
+                //popup message
+                Toast email = Toast.makeText(RegisterAccountActivity.this,
+                        "emails do not match!", Toast.LENGTH_SHORT);
+                email.show();
+            }
+
             if(!pass1str.equals(pass2str))
             {
                 //popup message
@@ -39,13 +48,18 @@ public class RegisterAccountActivity extends AppCompatActivity {
                 pass.show();
             }
 
-            if(!email1str.equals(email2str))
+            else
             {
-                //popup message
-                Toast email = Toast.makeText(RegisterAccountActivity.this,
-                        "emails do not match!", Toast.LENGTH_SHORT);
-                email.show();
+                // insert new user info into db
+                //Contact c = new Contact();
+                //c.setUname(unamestr);
+                //c.setEmail(email1str);
+               // c.setPass(pass1str);
+
+               // helper.insertContact(c);
+
             }
+
         }
     }
 
