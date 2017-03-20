@@ -38,6 +38,6 @@
     <string name="SettingsTitle">Settings</string>
     <string name="Notifications">Notificaitons:</string>
     <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
-    <string name="locationSwitch">Locaiton</string>
+    <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
 </resources>
