@@ -25,13 +25,12 @@
         <activity
             android:name=".MainScreenActivity"
             android:label="@string/title_activity_main_screen"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         // may need deleted eventually
-        <activity android:name="content_main_screen"
-            android:label="content_main_screen"
-            />
+        <activity
+            android:name=".content_main_screen"
+            android:label="content_main_screen" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>

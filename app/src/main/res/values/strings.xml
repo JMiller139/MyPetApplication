@@ -34,4 +34,7 @@
     <string name="jonathansName">Mickey</string>
     <string name="username">username</string>
     <string name="emptyString" />
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="SettingsTitle">Settings</string>
+    <string name="Notifications">Notificaitons:</string>
 </resources>
