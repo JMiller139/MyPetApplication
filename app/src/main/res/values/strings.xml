@@ -34,4 +34,10 @@
     <string name="jonathansName">Mickey</string>
     <string name="username">username</string>
     <string name="emptyString" />
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="SettingsTitle">Settings</string>
+    <string name="Notifications">Notificaitons:</string>
+    <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
+    <string name="locationSwitch">Locaiton</string>
+    <string name="locationDescription">Will allow MyPet to access your current location</string>
 </resources>
