@@ -32,7 +32,7 @@
     <string name="passwordPlacehldr">Password</string>
     <string name="emailPlacehldr">Email</string>
     <string name="jonathansName">Mickey</string>
-    <string name="username">username</string>
+    <string name="username">Username \n Email Address \n Other optional user information</string>
     <string name="emptyString" />
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="SettingsTitle">Settings</string>
@@ -41,4 +41,6 @@
     <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="examplePetName">Name:Spot \n Age:2 \n Description of the pet</string>
+    <string name="examplePetNameTwo">Name:Daisy \n Age:2 \n Description of the pet</string>
 </resources>
