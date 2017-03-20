@@ -13,15 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
-public class MainScreenActivity extends AppCompatActivity
+public class UserProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_screen);
+        setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,7 +56,7 @@ public class MainScreenActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_screen, menu);
+        getMenuInflater().inflate(R.menu.user_profile, menu);
         return true;
     }
 
@@ -83,7 +82,8 @@ public class MainScreenActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            MainScreenActivity homepage = new MainScreenActivity();
+            Intent intent = new Intent(this,MainScreenActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, UserProfileActivity.class);
             startActivity(intent);
@@ -92,8 +92,7 @@ public class MainScreenActivity extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
-        }
-        else if (id == R.id.nav_inbox) {
+        } else if (id == R.id.nav_inbox) {
 
         }
 

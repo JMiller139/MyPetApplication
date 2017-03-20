@@ -40,4 +40,5 @@
     <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
     <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
 </resources>
