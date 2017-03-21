@@ -24,5 +24,13 @@
             android:icon="@drawable/iconmessage"
             android:title="Inbox" />
     </group>
+    <item android:title="Help">
+        <menu>
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/iconinfo"
+                android:title="Info" />
+        </menu>
+    </item>
 
 </menu>
