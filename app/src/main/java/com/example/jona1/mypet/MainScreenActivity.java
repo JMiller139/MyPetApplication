@@ -89,7 +89,8 @@ public class MainScreenActivity extends AppCompatActivity
             Intent intent = new Intent(this, UserProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_map) {
-
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
