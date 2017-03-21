@@ -22,7 +22,7 @@
     <string name="passwordTextView">Password:</string>
     <string name="confirmPasswordTextView">Confirm Password:</string>
     <string name="createAccountButtonText">Create Account</string>
-    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_activity_main_screen">Home</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -40,7 +40,7 @@
     <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
     <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_user_profile">Profile</string>
     <string name="examplePetName">Name:Spot \n Age:2 \n Description of the pet</string>
     <string name="examplePetNameTwo">Name:Daisy \n Age:2 \n Description of the pet</string>
 </resources>

@@ -27,15 +27,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/settingsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/SettingsTitle"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="25dp"
-                tools:layout_editor_absoluteY="29dp" />
-
             <Switch
                 android:id="@+id/notificationSwitch"
                 android:layout_width="match_parent"

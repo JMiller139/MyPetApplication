@@ -28,7 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingActivity"
-            android:label="SettingActivity" />
+            android:label="Settings" />
         // may need deleted eventually
         <activity
             android:name=".content_main_screen"

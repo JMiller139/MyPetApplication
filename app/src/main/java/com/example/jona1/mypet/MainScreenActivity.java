@@ -83,7 +83,8 @@ public class MainScreenActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            MainScreenActivity homepage = new MainScreenActivity();
+            Intent intent = new Intent(this, MainScreenActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, UserProfileActivity.class);
             startActivity(intent);
