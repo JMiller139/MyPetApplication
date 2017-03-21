@@ -30,7 +30,7 @@
             <Switch
                 android:id="@+id/notificationSwitch"
                 android:layout_width="match_parent"
-                android:layout_height="37dp"
+                android:layout_height="38dp"
                 android:text="@string/Notifications"
                 android:textSize="24sp" />
 
