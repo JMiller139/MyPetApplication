@@ -14,4 +14,12 @@ public class RegisterAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_account);
     }
-}
+// @author Stacy Austin
+    public void onCreateAccountClick(View v)
+    {
+
+
+        }
+    }
+
+
