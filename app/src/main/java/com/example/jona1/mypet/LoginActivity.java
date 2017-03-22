@@ -16,23 +16,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signinClicked(View v){
 
-        if(v.getId() == R.id.signinButton)
-        {
-            // welcome message with username or email
-            EditText a = (EditText)findViewById(R.id.emailEditText);
-            String str = a.getText().toString();
+        Intent intent = new Intent(this, MainScreenActivity.class);
+        startActivity(intent);
 
-            // this line is causing pop out nav bar to not show
-            // need to be changed to MainScreenActivity.class but that causes
-            // the username to not show in welcome message
-            Intent intent = new Intent(this, MainScreenActivity.class);
-
-            intent.putExtra("Username", str);
-            startActivity(intent);
-        }
     }
 
     public void registerClicked(View v){
+
         Intent intent = new Intent(this, RegisterAccountActivity.class);
         startActivity(intent);
     }
