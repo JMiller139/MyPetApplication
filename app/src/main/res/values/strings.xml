@@ -36,7 +36,7 @@
     <string name="emptyString" />
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="SettingsTitle">Settings</string>
-    <string name="Notifications">Notifications:</string>
+    <string name="Notifications">Notifications</string>
     <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
     <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
