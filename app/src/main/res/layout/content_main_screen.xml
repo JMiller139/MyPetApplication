@@ -19,4 +19,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="62dp" />
+
 </android.support.constraint.ConstraintLayout>

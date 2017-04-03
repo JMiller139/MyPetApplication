@@ -1,66 +1,100 @@
 package com.example.jona1.mypet;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class RegisterAccountActivity extends AppCompatActivity {
+// saustin4
+        import android.app.ProgressDialog;
+        import android.os.AsyncTask;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        //import android.view.Menu;
+        //import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.Toast;
 
-    DatabaseHelper helper = new DatabaseHelper(this);
+        //import java.io.BufferedReader;
+        //import java.io.InputStreamReader;
+        //import java.io.UnsupportedEncodingException;
+        //import java.net.HttpURLConnection;
+        //import java.net.URL;
+        //import java.net.URLEncoder;
+        import java.util.HashMap;
+        //import java.util.Map;
+
+public class RegisterAccountActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+    private EditText editTextEmail;
+
+    private Button buttonRegister;
+
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/register.php";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_account);
+
+        editTextUsername = (EditText) findViewById(R.id.usernameEditText);
+        editTextPassword = (EditText) findViewById(R.id.passwordEditText);
+        editTextEmail = (EditText) findViewById(R.id.emailEditText);
+
+        buttonRegister = (Button) findViewById(R.id.createAccountButton);
+
+        buttonRegister.setOnClickListener(this);
     }
-// @author Stacy Austin
-    public void onCreateAccountClick(View v)
-    {
-        if(v.getId()==R.id.createAccountButton)
-        {
-            EditText uname = (EditText) findViewById(R.id.usernameEditText);
-            EditText email1 = (EditText) findViewById(R.id.emailEditText);
-            EditText email2 = (EditText) findViewById(R.id.confirmEmailEditText);
-            EditText pass1 = (EditText) findViewById(R.id.passwordEditText);
-            EditText pass2 = (EditText) findViewById(R.id.confrimPasswordEditText);
-
-            String unamestr = uname.getText().toString();
-            String email1str = email1.getText().toString();
-            String email2str = email2.getText().toString();
-            String pass1str = pass1.getText().toString();
-            String pass2str = pass2.getText().toString();
-
-            if(!email1str.equals(email2str))
-            {
-                //popup message
-                Toast email = Toast.makeText(RegisterAccountActivity.this,
-                        "emails do not match!", Toast.LENGTH_SHORT);
-                email.show();
-            }
-
-            if(!pass1str.equals(pass2str))
-            {
-                //popup message
-                Toast pass = Toast.makeText(RegisterAccountActivity.this,
-                        "passwords do not match!", Toast.LENGTH_SHORT);
-                pass.show();
-            }
-
-            else
-            {
-                // insert new user info into db
-                //Contact c = new Contact();
-                //c.setUname(unamestr);
-                //c.setEmail(email1str);
-               // c.setPass(pass1str);
-
-               // helper.insertContact(c);
-
-            }
-
+    //---
+    @Override
+    public void onClick(View v) {
+        if(v == buttonRegister){
+            registerUser();
         }
     }
 
+    private void registerUser() {
+        String username = editTextUsername.getText().toString().trim().toLowerCase();
+        String password = editTextPassword.getText().toString().trim().toLowerCase();
+        String email = editTextEmail.getText().toString().trim().toLowerCase();
+
+        register(username,password,email);
+    }
+
+    private void register(String username, String password, String email) {
+        class RegisterUser extends AsyncTask<String, Void, String>{
+            private ProgressDialog loading;
+            private RegisterUserClass ruc = new RegisterUserClass();
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(RegisterAccountActivity.this, "Please Wait",null, true, true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                HashMap<String, String> data = new HashMap<>();
+                data.put("username",params[0]);
+                data.put("password",params[1]);
+                data.put("email",params[2]);
+
+
+
+                return  ruc.sendPostRequest(REGISTER_URL,data);
+            }
+        }
+
+        RegisterUser ru = new RegisterUser();
+        ru.execute(username,password,email);
+    }
 }

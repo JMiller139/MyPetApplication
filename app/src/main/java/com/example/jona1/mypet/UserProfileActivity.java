@@ -100,4 +100,10 @@ public class UserProfileActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void addPet(View v){
+        Intent intent = new Intent(this, CreatePetProfileActivity.class);
+        startActivity(intent);
+    }
 }
+

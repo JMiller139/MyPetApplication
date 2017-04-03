@@ -36,7 +36,7 @@
     <string name="emptyString" />
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="SettingsTitle">Settings</string>
-    <string name="Notifications">Notifications:</string>
+    <string name="Notifications">Notifications</string>
     <string name="notificationDiscription">Allowing MyPet to push notifications to your phone</string>
     <string name="locationSwitch">Location</string>
     <string name="locationDescription">Will allow MyPet to access your current location</string>
@@ -116,4 +116,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="zipText">Turn on the location setting or enter a Zip code so that MyPet can
+        search for posts by you current location</string>
+    <string name="petName">Pet Name:</string>
 </resources>

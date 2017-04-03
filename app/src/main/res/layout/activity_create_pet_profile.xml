@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jona1.mypet.CreatePetProfileActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/petPicture"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/spot" />
+
+
+            <TextView
+                android:id="@+id/petNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/petPicture"
+                android:gravity="center_vertical"
+                android:text="@string/petName"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/petNameTextField"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/petNameTextView"
+                android:layout_alignBottom="@+id/petNameTextView"
+                android:layout_toRightOf="@+id/petNameTextView"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/petNameTextView"
+                android:gravity="center_vertical"
+                android:text="TextView"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/tempEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/petNameTextView"
+                android:layout_toRightOf="@+id/tempTextView"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView"
+                android:layout_alignParentLeft="true"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:layout_below="@+id/tempEditText"
+                android:layout_toRightOf="@+id/tempTextView2"
+                android:layout_alignParentRight="true"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView2"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tempEditText2"
+                android:layout_toRightOf="@+id/tempTextView3"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView3"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempEditText3"
+                android:layout_toRightOf="@+id/tempTextView4"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tempTextView4"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempEditText4"
+                android:layout_toRightOf="@+id/tempTextView5"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tempTextView5"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempEditText5"
+                android:layout_toRightOf="@+id/tempTextView6"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView7"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView6"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText7"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempEditText6"
+                android:layout_toRightOf="@+id/tempTextView7"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"/>
+
+            <TextView
+                android:id="@+id/tempTextView8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView7"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:layout_toRightOf="@+id/tempTextView8"
+                android:layout_below="@+id/tempEditText7"
+                android:layout_alignParentRight="true"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView9"
+                android:layout_width="wrap_content"
+
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView8"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText9"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/tempTextView9"
+                android:layout_below="@+id/tempEditText8"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/tempTextView10"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tempTextView9"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <EditText
+                android:id="@+id/tempEditText10"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/tempTextView10"
+                android:layout_below="@+id/tempEditText9"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
