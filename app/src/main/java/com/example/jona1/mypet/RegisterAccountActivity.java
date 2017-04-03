@@ -30,7 +30,7 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "http://saustin4.com/UserRegistration/register.php";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/register.php";
 
 
     @Override
