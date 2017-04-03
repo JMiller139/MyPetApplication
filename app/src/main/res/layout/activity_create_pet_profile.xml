@@ -50,6 +50,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/petName"
                 android:textAlignment="center"
+                android:textColor="Black"
                 android:textSize="18sp" />
 
             <EditText
@@ -58,222 +59,136 @@
                 android:layout_height="50dp"
                 android:layout_alignBaseline="@+id/petNameTextView"
                 android:layout_alignBottom="@+id/petNameTextView"
-                android:layout_toRightOf="@+id/petNameTextView"
                 android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/petNameTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/tempTextView"
+                android:id="@+id/speciesTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/petNameTextView"
                 android:gravity="center_vertical"
-                android:text="TextView"
+                android:text="@string/speciesText"
+                android:textColor="Black"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tempEditText"
+                android:id="@+id/speciesEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_alignParentRight="true"
                 android:layout_below="@+id/petNameTextView"
-                android:layout_toRightOf="@+id/tempTextView"
-                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/speciesTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/tempTextView2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView"
-                android:layout_alignParentLeft="true"
-                android:textSize="18sp"
-                android:gravity="center_vertical"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/tempEditText2"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:layout_below="@+id/tempEditText"
-                android:layout_toRightOf="@+id/tempTextView2"
-                android:layout_alignParentRight="true"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tempTextView3"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView2"
-                android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/tempEditText3"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/tempEditText2"
-                android:layout_toRightOf="@+id/tempTextView3"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tempTextView4"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView3"
-                android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/tempEditText4"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@+id/tempEditText3"
-                android:layout_toRightOf="@+id/tempTextView4"
-                android:layout_alignParentRight="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tempTextView5"
+                android:id="@+id/breedTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/tempTextView4"
+                android:layout_below="@+id/speciesTextView"
                 android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:textColor="Black"
+                android:text="@string/breedText"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tempEditText5"
+                android:id="@+id/breedEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempEditText4"
-                android:layout_toRightOf="@+id/tempTextView5"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/speciesEditText"
+                android:layout_toRightOf="@+id/breedTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/tempTextView6"
+                android:id="@+id/markingsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/tempTextView5"
+                android:layout_below="@+id/breedTextView"
                 android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:textColor="Black"
+                android:text="@string/markingsText"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tempEditText6"
+                android:id="@+id/markingsEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempEditText5"
-                android:layout_toRightOf="@+id/tempTextView6"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/breedEditText"
+                android:layout_toRightOf="@+id/markingsTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/tempTextView7"
+                android:id="@+id/rabiesTagTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView6"
                 android:layout_alignParentLeft="true"
+                android:layout_below="@+id/markingsTextView"
                 android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:textColor="Black"
+                android:text="@string/rabiesTagText"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/tempEditText7"
+                android:id="@+id/rabiesEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempEditText6"
-                android:layout_toRightOf="@+id/tempTextView7"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/markingsEditText"
+                android:layout_toRightOf="@+id/rabiesTagTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"/>
+                android:inputType="textPersonName" />
+
+            <Switch
+                android:id="@+id/biteSwitch"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/rabiesTagTextView"
+                android:gravity="center_vertical"
+                android:text="@string/biteStatus"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tempTextView8"
+                android:id="@+id/noteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView7"
                 android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/biteSwitch"
+                android:gravity="center"
+                android:textColor="Black"
                 android:textSize="18sp"
-                android:text="TextView" />
+                android:text="@string/notesText" />
 
             <EditText
-                android:id="@+id/tempEditText8"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:layout_toRightOf="@+id/tempTextView8"
-                android:layout_below="@+id/tempEditText7"
-                android:layout_alignParentRight="true"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <TextView
-                android:id="@+id/tempTextView9"
-                android:layout_width="wrap_content"
-
-                android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView8"
+                android:id="@+id/notesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/tempEditText9"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@+id/tempTextView9"
-                android:layout_below="@+id/tempEditText8"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/noteTextView"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="@string/infoHint"
+                android:inputType="textMultiLine" />
 
-            <TextView
-                android:id="@+id/tempTextView10"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/createPetButton"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/tempTextView9"
-                android:layout_alignParentLeft="true"
-                android:gravity="center_vertical"
-                android:textSize="18sp"
-                android:text="TextView" />
-
-            <EditText
-                android:id="@+id/tempEditText10"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_toRightOf="@+id/tempTextView10"
-                android:layout_below="@+id/tempEditText9"
-                android:layout_alignParentRight="true"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:layout_below="@+id/notesSection"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/addPetText" />
 
 
         </RelativeLayout>
