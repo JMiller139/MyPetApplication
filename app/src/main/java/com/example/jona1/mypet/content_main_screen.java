@@ -16,8 +16,7 @@ public class content_main_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main_screen);
 
-        textView = (TextView) findViewById(R.id.textViewUserName);
-
+        textView = (TextView) findViewById(R.id.TVusername);
         Intent intent = getIntent();
 
         String username = intent.getStringExtra(LoginActivity.USER_NAME);
