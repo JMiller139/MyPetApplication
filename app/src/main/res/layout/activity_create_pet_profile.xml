@@ -39,7 +39,6 @@
                 app:srcCompat="@drawable/doggy" />
 
 
-
             <TextView
                 android:id="@+id/petNameTextView"
                 android:layout_width="wrap_content"
