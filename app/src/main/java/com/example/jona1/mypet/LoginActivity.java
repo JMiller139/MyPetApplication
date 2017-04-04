@@ -62,7 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 super.onPostExecute(s);
                 loading.dismiss();
                 if(s.equalsIgnoreCase("success")){
-                    Intent intent = new Intent(LoginActivity.this,content_main_screen.class);
+                    //changed intent from content_main_screen
+                    Intent intent = new Intent(LoginActivity.this,MainScreenActivity.class);
                     intent.putExtra(USER_NAME,username);
                     startActivity(intent);
                 }else{
@@ -97,7 +98,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public void registerClicked(View v){
-
         Intent intent = new Intent(this, RegisterAccountActivity.class);
         startActivity(intent);
     }

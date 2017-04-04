@@ -28,13 +28,15 @@
 
             <ImageButton
                 android:id="@+id/petPicture"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/spot" />
+                android:cropToPadding="false"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/doggy" />
 
 
             <TextView
@@ -50,7 +52,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/petName"
                 android:textAlignment="center"
-                android:textColor="Black"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="18sp" />
 
             <EditText
@@ -72,7 +74,7 @@
                 android:layout_below="@+id/petNameTextView"
                 android:gravity="center_vertical"
                 android:text="@string/speciesText"
-                android:textColor="Black"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="18sp" />
 
             <EditText
@@ -92,8 +94,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/speciesTextView"
                 android:gravity="center_vertical"
-                android:textColor="Black"
                 android:text="@string/breedText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="18sp" />
 
             <EditText
@@ -113,8 +115,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/breedTextView"
                 android:gravity="center_vertical"
-                android:textColor="Black"
                 android:text="@string/markingsText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="18sp" />
 
             <EditText
@@ -134,8 +136,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/markingsTextView"
                 android:gravity="center_vertical"
-                android:textColor="Black"
                 android:text="@string/rabiesTagText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="18sp" />
 
             <EditText
@@ -166,9 +168,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/biteSwitch"
                 android:gravity="center"
-                android:textColor="Black"
-                android:textSize="18sp"
-                android:text="@string/notesText" />
+                android:text="@string/notesText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/notesSection"
@@ -188,6 +190,7 @@
                 android:layout_below="@+id/notesSection"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:onClick="addPetClicked"
                 android:text="@string/addPetText" />
 
 

@@ -102,7 +102,7 @@ public class UserProfileActivity extends AppCompatActivity
     }
 
     public void addPet(View v){
-        Intent intent = new Intent(this, CreatePetProfileActivity.class);
+        Intent intent = new Intent(UserProfileActivity.this, CreatePetProfileActivity.class);
         startActivity(intent);
     }
 }
