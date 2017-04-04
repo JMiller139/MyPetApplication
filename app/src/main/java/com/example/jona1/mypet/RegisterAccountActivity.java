@@ -27,6 +27,9 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
     private EditText editTextUsername;
     private EditText editTextPassword;
     private EditText editTextEmail;
+    private EditText editTextFname;
+    private EditText editTextLname;
+    private EditText editTextAddress;
 
     private Button buttonRegister;
 
@@ -41,6 +44,9 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         editTextUsername = (EditText) findViewById(R.id.usernameEditText);
         editTextPassword = (EditText) findViewById(R.id.passwordEditText);
         editTextEmail = (EditText) findViewById(R.id.emailEditText);
+        editTextFname = (EditText) findViewById(R.id.fnameEditText);
+        editTextLname = (EditText) findViewById(R.id.lnameEditText);
+        editTextAddress = (EditText) findViewById(R.id.addressEditText);
 
         buttonRegister = (Button) findViewById(R.id.createAccountButton);
 
@@ -58,11 +64,14 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         String username = editTextUsername.getText().toString().trim().toLowerCase();
         String password = editTextPassword.getText().toString().trim().toLowerCase();
         String email = editTextEmail.getText().toString().trim().toLowerCase();
+        String fname = editTextFname.getText().toString().trim().toLowerCase();
+        String lname = editTextLname.getText().toString().trim().toLowerCase();
+        String address = editTextAddress.getText().toString().trim().toLowerCase();
 
-        register(username,password,email);
+        register(username,password,email,fname,lname,address);
     }
 
-    private void register(String username, String password, String email) {
+    private void register(String username, String password, String email, String fname, String lname, String address) {
         class RegisterUser extends AsyncTask<String, Void, String>{
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -87,14 +96,15 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
                 data.put("username",params[0]);
                 data.put("password",params[1]);
                 data.put("email",params[2]);
-
-
+                data.put("fname",params[3]);
+                data.put("lname",params[4]);
+                data.put("address",params[5]);
 
                 return  ruc.sendPostRequest(REGISTER_URL,data);
             }
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(username,password,email);
+        ru.execute(username,password,email, fname, lname, address);
     }
 }
