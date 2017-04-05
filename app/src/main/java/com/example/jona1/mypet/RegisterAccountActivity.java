@@ -93,18 +93,18 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
             protected String doInBackground(String... params) {
 
                 HashMap<String, String> data = new HashMap<>();
-                data.put("username",params[0]);
-                data.put("password",params[1]);
-                data.put("email",params[2]);
-                data.put("fname",params[3]);
-                data.put("lname",params[4]);
-                data.put("address",params[5]);
+                data.put("fname",params[0]);
+                data.put("lname",params[1]);
+                data.put("address",params[2]);
+                data.put("username",params[3]);
+                data.put("password",params[4]);
+                data.put("email",params[5]);
 
                 return  ruc.sendPostRequest(REGISTER_URL,data);
             }
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(username,password,email, fname, lname, address);
+        ru.execute(fname,lname,address,username,password,email);
     }
 }
