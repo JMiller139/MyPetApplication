@@ -41,7 +41,6 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         editTextUsername = (EditText) findViewById(R.id.usernameEditText);
         editTextPassword = (EditText) findViewById(R.id.passwordEditText);
         editTextEmail = (EditText) findViewById(R.id.emailEditText);
-
         buttonRegister = (Button) findViewById(R.id.createAccountButton);
 
         buttonRegister.setOnClickListener(this);
