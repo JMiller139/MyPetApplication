@@ -18,7 +18,7 @@
     <string name="createAnAccountTitle">Create an Account</string>
     <string name="userNameTextView">Username:</string>
     <string name="emailTextView">Email:</string>
-    <string name="confirmEmialTextView">Confirm Email:</string>
+    <string name="confirmEmailTextView">Confirm Email:</string>
     <string name="passwordTextView">Password:</string>
     <string name="confirmPasswordTextView">Confirm Password:</string>
     <string name="createAccountButtonText">Create Account</string>
@@ -127,4 +127,7 @@
     <string name="notesText">Helpful Information About Your Pet</string>
     <string name="infoHint">Please enter your pet information here</string>
     <string name="addPetText">Add Pet</string>
+    <string name="firstNameTextView">First Name:</string>
+    <string name="lastNameTextView">Last Name:</string>
+    <string name="addressTextView">Address:</string>
 </resources>
