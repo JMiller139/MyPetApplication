@@ -130,4 +130,12 @@
     <string name="firstNameTextView">First Name:</string>
     <string name="lastNameTextView">Last Name:</string>
     <string name="addressTextView">Address:</string>
+    <string name="editProfileTitle">Profile Editor</string>
+    <string name="choosePictureText">Select a Picture</string>
+    <string name="CurrentUserName">UNPlaceholder</string>
+    <string name="UEPlaceholder">Email@placeholer.com</string>
+    <string name="changePassword">Change Password</string>
+    <string name="currentUserFirstName">First</string>
+    <string name="currentUserLastName">Last</string>
+    <string name="saveChangesButtonText">Save Changes</string>
 </resources>
