@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jona1.mypet.EditProfileActivity">
+    tools:context="com.example.jona1.mypet.EditPetProfile">
 
     <ScrollView
         android:layout_width="395dp"
         android:layout_height="587dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/editPetProfileEditTitle"
+                android:id="@+id/editProfileEditTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -37,7 +38,7 @@
                 android:id="@+id/petProfileImage"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:layout_below="@+id/editPetProfileEditTitle"
+                android:layout_below="@+id/editProfileEditTitle"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
