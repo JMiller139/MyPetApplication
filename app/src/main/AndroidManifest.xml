@@ -61,7 +61,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="Maps" />
-        <activity android:name=".CreatePetProfileActivity"></activity>
+        <activity android:name=".CreatePetProfileActivity" />
+        <activity android:name=".EditProfileActivity"></activity>
     </application>
 
 </manifest>

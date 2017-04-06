@@ -23,20 +23,7 @@ public class CreatePetProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_pet_profile);
-    }
 
-    public void addPetClicked(View v){
-        updateInfo();
-        String pName = getPetName();
-        String pSpecies = getSpecies();
-        String pBreed = getBreed();
-        String pMarkings = getMarkings();
-        String pRabies = getRabies();
-        Boolean pBite = getBite();
-        String pNotes = getNotes();
-    }
-
-    public void updateInfo(){
         this.petName = (EditText) findViewById(R.id.petNameTextView);
         this.species = (EditText) findViewById(R.id.speciesEditText);
         this.breed = (EditText) findViewById(R.id.breedEditText);
@@ -44,6 +31,16 @@ public class CreatePetProfileActivity extends AppCompatActivity {
         this.rabiesTag = (EditText) findViewById(R.id.rabiesEditText);
         this.bite = (Switch) findViewById(R.id.biteSwitch);
         this.notes = (EditText) findViewById(R.id.notesSection);
+    }
+
+    public void addPetClicked(){
+        String pName = getPetName();
+        String pSpecies = getSpecies();
+        String pBreed = getBreed();
+        String pMarkings = getMarkings();
+        String pRabies = getRabies();
+        Boolean pBite = getBite();
+        String pNotes = getNotes();
     }
 
     private String getPetName(){
