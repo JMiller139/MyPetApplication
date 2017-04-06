@@ -23,7 +23,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/register.php";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php";
 
 
     @Override
@@ -122,7 +122,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
     }
 
     private String getBite(){
-        if (getBite) {return "true";}
+        if (bite.isChecked()) {return "true";}
         else {return "false";}
     }
 
