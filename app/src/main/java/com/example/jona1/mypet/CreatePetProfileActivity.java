@@ -86,12 +86,14 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
             protected String doInBackground(String... params) {
 
                 HashMap<String, String> data = new HashMap<>();
-                data.put("fname",params[0]);
-                data.put("lname",params[1]);
-                data.put("address",params[2]);
-                data.put("username",params[3]);
-                data.put("password",params[4]);
-                data.put("email",params[5]);
+                data.put("name",params[0]);
+                data.put("species",params[1]);
+                data.put("breed",params[2]);
+                data.put("markings",params[3]);
+                data.put("photo",params[4]);
+                data.put("rabies_tag_num",params[5]);
+                data.put("bite_status",params[6]);
+                data.put("notes",params[7]);
 
                 return  ruc.sendPostRequest(REGISTER_URL,data);
             }
