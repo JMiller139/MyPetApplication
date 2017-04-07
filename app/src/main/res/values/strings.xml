@@ -138,4 +138,5 @@
     <string name="currentUserFirstName">First</string>
     <string name="currentUserLastName">Last</string>
     <string name="saveChangesButtonText">Save Changes</string>
+    <string name="petProfileEditor">Pet Profile Editor</string>
 </resources>

@@ -10,7 +10,7 @@
         android:layout_width="395dp"
         android:layout_height="587dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
@@ -22,28 +22,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <TextView
-                android:id="@+id/editProfileEditTitle"
+                android:id="@+id/petProfileEditor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:text="@string/editProfileTitle"
+                android:text="@string/petProfileEditor"
                 android:textAlignment="center"
                 android:textColor="@color/wallet_bright_foreground_holo_light"
                 android:textSize="25sp" />
 
             <ImageView
-                android:id="@+id/petProfileImage"
+                android:id="@+id/petPicture"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:layout_below="@+id/editProfileEditTitle"
+                android:layout_below="@+id/petProfileEditor"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
                 android:cropToPadding="false"
-                android:layout_marginTop="10dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@color/common_signin_btn_dark_text_disabled" />
 
@@ -51,7 +52,7 @@
                 android:id="@+id/selectPetPicture"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@id/petProfileImage"
+                android:layout_below="@id/petPicture"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:drawablePadding="8dp"
@@ -63,57 +64,83 @@
                 android:id="@+id/changePetName"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:ems="10"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/selectPetPicture"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:ems="10"
                 android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:gravity="center"
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/changeBreed"
+                android:id="@+id/changePetBreed"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
+                android:ems="10"
                 android:layout_below="@id/changePetName"
-                android:gravity="center"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/changePetMarkings"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_below="@id/changePetBreed"
+                android:textSize="16sp"
                 android:inputType="textPersonName"
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/changeMarkings"
+                android:id="@+id/changeRNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@id/changeBreed"
+                android:ems="10"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:ems="10"
                 android:gravity="center"
+                android:layout_below="@id/changePetMarkings"
                 android:inputType="textPersonName"
+                android:textSize="16sp"
                 android:text="Name" />
 
-            <EditText
-                android:id="@+id/changeRTag"
-                android:layout_width="wrap_content"
+            <Switch
+                android:id="@+id/changeBiteStatus"
                 android:layout_height="50dp"
-                android:layout_below="@id/changeMarkings"
+                android:layout_width="250dp"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/changeRNumber"
                 android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/biteStatus"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/changeNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:ems="10"
+                android:layout_below="@id/changeBiteStatus"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
                 android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textMultiLine" />
 
             <Button
-                android:id="@+id/saveChangesButton"
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@id/changeRTag"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/changeNotes"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:text="@string/saveChangesButtonText" />
 
         </RelativeLayout>

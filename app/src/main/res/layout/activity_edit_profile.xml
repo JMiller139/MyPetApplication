@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/editPetProfileEditTitle"
+                android:id="@+id/editProfileEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -37,7 +37,7 @@
                 android:id="@+id/petProfileImage"
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
-                android:layout_below="@+id/editPetProfileEditTitle"
+                android:layout_below="@+id/editProfileEditText"
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:background="@android:color/transparent"
@@ -47,7 +47,7 @@
                 app:srcCompat="@color/common_signin_btn_dark_text_disabled" />
 
             <Button
-                android:id="@+id/selectPetPicture"
+                android:id="@+id/selectPicture"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_below="@id/petProfileImage"
@@ -59,11 +59,11 @@
                 android:text="@string/choosePictureText" />
 
             <EditText
-                android:id="@+id/changePetName"
+                android:id="@+id/changeFName"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/selectPetPicture"
+                android:layout_below="@id/selectPicture"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:ems="10"
@@ -71,22 +71,10 @@
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/changeBreed"
+                android:id="@+id/changeLName"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/changePetName"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
-
-            <EditText
-                android:id="@+id/changeMarkings"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_below="@id/changeBreed"
+                android:layout_below="@id/changeFName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:ems="10"
@@ -95,10 +83,22 @@
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/changeRTag"
+                android:id="@+id/changeEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@id/changeMarkings"
+                android:layout_below="@id/changeLName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <EditText
+                android:id="@+id/changeAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/changeEmail"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:ems="10"
@@ -110,7 +110,7 @@
                 android:id="@+id/saveChangesButton"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_below="@id/changeRTag"
+                android:layout_below="@id/changeAddress"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="@string/saveChangesButtonText" />
