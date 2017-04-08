@@ -59,12 +59,13 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         String pRabies = getRabies();
         String pBite = getBite();
         String pNotes = getNotes();
+        String pPhoto = getPhoto();
 
-        register(pName, pSpecies, pBreed, pMarkings, pRabies, pBite, pNotes);
+        register(pName, pSpecies, pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto);
     }
 
     private void register(String pName, String pSpecies, String pBreed, String pMarkings,
-                          String pRabies, String pBite, String pNotes) {
+                          String pRabies, String pBite, String pNotes, String pPhoto) {
         class RegisterUser extends AsyncTask<String, Void, String>{
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -90,17 +91,17 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
                 data.put("species",params[1]);
                 data.put("breed",params[2]);
                 data.put("markings",params[3]);
-                data.put("photo",params[4]);
-                data.put("rabies_tag_num",params[5]);
-                data.put("bite_status",params[6]);
-                data.put("notes",params[7]);
+                data.put("rabies_tag_num",params[4]);
+                data.put("bite_status",params[5]);
+                data.put("notes",params[6]);
+                data.put("photo",params[7]);
 
                 return  ruc.sendPostRequest(REGISTER_URL,data);
             }
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes); //Pass bite as a string
+        ru.execute(pName, pSpecies,  pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto); //Pass bite as a string
     }
 
     private String getPetName(){
@@ -131,6 +132,8 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
     private String getNotes(){
         return notes.getText().toString().trim().toLowerCase();
     }
+
+    private String getPhoto(){return "photo";}
 
 
 
