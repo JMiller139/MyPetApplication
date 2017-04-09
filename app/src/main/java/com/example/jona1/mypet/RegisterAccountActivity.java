@@ -31,6 +31,7 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
     private EditText editTextLname;
     private EditText editTextAddress;
 
+
     private Button buttonRegister;
 
     private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/register.php";

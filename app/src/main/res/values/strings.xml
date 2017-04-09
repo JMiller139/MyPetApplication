@@ -139,4 +139,11 @@
     <string name="currentUserLastName">Last</string>
     <string name="saveChangesButtonText">Save Changes</string>
     <string name="petProfileEditor">Pet Profile Editor</string>
+    <string name="editprofilebutton">editProfileButton</string>
+    <string name="button">Button</string>
+    <string name="name">Name</string>
+    <string name="description">description</string>
+    <string name="name2">Name</string>
+    <string name="name3">Name</string>
+    <string name="name4">Name</string>
 </resources>
