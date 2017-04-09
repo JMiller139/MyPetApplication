@@ -105,9 +105,5 @@ public class UserProfileActivity extends AppCompatActivity
         Intent intent = new Intent(UserProfileActivity.this, CreatePetProfileActivity.class);
         startActivity(intent);
     }
-    public void startEdit(View v) {
-        Intent intent = new Intent(this, EditProfileActivity.class);
-        startActivity(intent);
-    }
 }
 
