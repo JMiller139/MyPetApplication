@@ -59,7 +59,8 @@
                 android:drawablePadding="8dp"
                 android:drawableRight="@drawable/ic_menu_camera"
                 android:gravity="center"
-                android:text="@string/choosePictureText" />
+                android:text="@string/choosePictureText"
+                tools:ignore="RtlHardcoded" />
 
             <EditText
                 android:id="@+id/changeFName"
@@ -95,7 +96,8 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="textPersonName"
-                android:text="@string/name3" />
+                android:text="@string/name3"
+                tools:ignore="TextFields" />
 
             <EditText
                 android:id="@+id/changeAddress"
