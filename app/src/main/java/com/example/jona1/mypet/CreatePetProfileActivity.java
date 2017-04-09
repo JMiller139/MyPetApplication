@@ -61,11 +61,11 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         String pNotes = getNotes();
         String pPhoto = getPhoto();
 
-        register(pName, pSpecies, pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto);
+        register(pName, pSpecies, pBreed , pPhoto, pMarkings, pRabies, pBite, pNotes);
     }
 
-    private void register(String pName, String pSpecies, String pBreed, String pMarkings,
-                          String pRabies, String pBite, String pNotes, String pPhoto) {
+    private void register(String pName, String pSpecies, String pBreed , String pPhoto, String pMarkings,
+                          String pRabies, String pBite, String pNotes) {
         class RegisterUser extends AsyncTask<String, Void, String>{
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -101,7 +101,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(pName, pSpecies,  pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto); //Pass bite as a string
+        ru.execute(pName,pSpecies,pBreed,pPhoto,pMarkings,pRabies,pBite,pNotes); //Pass bite as a string
     }
 
     private String getPetName(){
