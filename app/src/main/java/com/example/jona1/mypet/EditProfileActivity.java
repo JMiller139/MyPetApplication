@@ -35,7 +35,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             try {
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 Connection conn = DriverManager.getConnection(url, "Team04", "team04");
-                String query = "SELECT * FROM users WHERE user_id = 1";
+                String query = "SELECT * FROM users WHERE user_id = 13";
                 Statement st = conn.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next())

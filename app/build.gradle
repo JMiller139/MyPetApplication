@@ -33,9 +33,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.android.support:support-vector-drawable:25.3.0'
     testCompile 'junit:junit:4.12'
-   // compile files('/Users/Paige/AndroidStudioProjects/MyPetApplication/libs/mysql-connector-java-5.1.41/mysql-connector-java-5.1.41-bin.jar')
-//    compile files('/Users/Paige/AndroidStudioProjects/MyPetApplication/libs/mysql-connector-java-5.1.41/src/lib/c3p0-0.9.1-pre6.jar')
-  //  compile files('/Users/Paige/AndroidStudioProjects/MyPetApplication/libs/mysql-connector-java-5.1.41/src/lib/jboss-common-jdbc-wrapper.jar')
-    //compile files('/Users/Paige/AndroidStudioProjects/MyPetApplication/libs/mysql-connector-java-5.1.41/src/lib/jboss-common-jdbc-wrapper-src.jar')
-   // compile files('/Users/Paige/AndroidStudioProjects/MyPetApplication/libs/mysql-connector-java-5.1.41/src/lib/slf4j-api-1.6.1.jar')
+
 }
