@@ -29,7 +29,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(v == buttonRegister){
-            String url = "jdbc:mysql://10.0.2.2/test";
+            String url = "jdbc:mysql://192.168.1.102:3306/Team04";
 
 
             try {

@@ -33,5 +33,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.android.support:support-vector-drawable:25.3.0'
     testCompile 'junit:junit:4.12'
-
+    compile files('E:/Jonathan_Miller/College/Itec_370/MyPetApplication/libs/mysql-connector-java-3.0.17-ga-bin.jar')
 }

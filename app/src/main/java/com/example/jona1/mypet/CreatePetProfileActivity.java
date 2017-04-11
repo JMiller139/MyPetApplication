@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -102,7 +101,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(pName,pSpecies,pBreed,pPhoto,pMarkings,pRabies,pBite,pNotes); //Pass bite as a string
+        ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes,pPhoto); //Pass bite as a string
     }
 
     private String getPetName(){
