@@ -144,11 +144,22 @@
                 android:gravity="center"
                 android:inputType="textMultiLine" />
 
+            <Switch
+                android:id="@+id/lostSwitch"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/changeNotes"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/lostSwitchText"
+                android:textSize="18sp" />
+
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/changeNotes"
+                android:layout_below="@id/lostSwitch"
                 android:layout_centerHorizontal="true"
                 android:text="@string/saveChangesButtonText" />
 

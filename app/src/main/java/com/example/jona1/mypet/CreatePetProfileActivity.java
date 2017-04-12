@@ -11,6 +11,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 import java.util.HashMap;
 
+import android.util.Log;
+
 public class CreatePetProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText petName;
@@ -20,8 +22,9 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
     private EditText rabiesTag ;
     private Switch bite;
     private EditText notes;
-
     private Button buttonRegister;
+
+    private static String TAG = "testingMessage";
 
     private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php";
 
@@ -101,7 +104,9 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         }
 
         RegisterUser ru = new RegisterUser();
+        Log.i(TAG, "before ru.execute");
         ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes,pPhoto); //Pass bite as a string
+        Log.i(TAG, "ru.execute success");
     }
 
     private String getPetName(){

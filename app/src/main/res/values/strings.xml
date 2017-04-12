@@ -147,4 +147,5 @@
     <string name="name3">Name</string>
     <string name="name4">Name</string>
     <string name="name5">Name</string>
+    <string name="lostSwitchText">Mark Your Pet As Lost</string>
 </resources>
