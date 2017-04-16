@@ -30,7 +30,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(v == buttonRegister){
-            getUserInformation();
 
         }
     }
