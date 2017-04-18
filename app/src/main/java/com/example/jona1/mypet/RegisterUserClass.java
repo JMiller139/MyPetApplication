@@ -14,11 +14,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
+import android.util.Log;
 
 import javax.net.ssl.HttpsURLConnection;
 
 
 class RegisterUserClass {
+    private static String TAG = "testingMessage";
 
     String sendPostRequest(String requestURL,
                            HashMap<String, String> postDataParams) {
@@ -44,8 +46,9 @@ class RegisterUserClass {
             writer.flush();
             writer.close();
             os.close();
-            int responseCode=conn.getResponseCode();
 
+            int responseCode=conn.getResponseCode();
+            Log.i(TAG, "before if");
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 response = br.readLine();
@@ -56,7 +59,7 @@ class RegisterUserClass {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        Log.i(TAG, "sending return");
         return response;
     }
 

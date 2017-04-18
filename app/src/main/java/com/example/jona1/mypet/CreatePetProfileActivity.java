@@ -11,6 +11,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 import java.util.HashMap;
 
+import android.util.Log;
+
 public class CreatePetProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText petName;
@@ -20,8 +22,9 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
     private EditText rabiesTag ;
     private Switch bite;
     private EditText notes;
-
     private Button buttonRegister;
+
+    private static String TAG = "testingMessage";
 
     private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php";
 
@@ -61,11 +64,11 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         String pNotes = getNotes();
         String pPhoto = getPhoto();
 
-        register(pName, pSpecies, pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto);
+        register(pName, pSpecies, pBreed , pPhoto, pMarkings, pRabies, pBite, pNotes);
     }
 
-    private void register(String pName, String pSpecies, String pBreed, String pMarkings,
-                          String pRabies, String pBite, String pNotes, String pPhoto) {
+    private void register(String pName, String pSpecies, String pBreed , String pPhoto, String pMarkings,
+                          String pRabies, String pBite, String pNotes) {
         class RegisterUser extends AsyncTask<String, Void, String>{
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -101,7 +104,9 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(pName, pSpecies,  pBreed, pMarkings, pRabies, pBite, pNotes, pPhoto); //Pass bite as a string
+        Log.i(TAG, "before ru.execute");
+        ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes,pPhoto); //Pass bite as a string
+        Log.i(TAG, "ru.execute success");
     }
 
     private String getPetName(){

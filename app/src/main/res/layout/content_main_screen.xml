@@ -10,19 +10,19 @@
 
     <TextView
         android:id="@+id/TVusername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="531dp"
+        android:layout_width="125dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="84dp"
-        android:layout_marginLeft="86dp"
         android:text="@string/emptyString"
+        android:gravity="center"
+        tools:ignore="RtlHardcoded"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.702" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
