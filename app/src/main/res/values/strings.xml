@@ -27,13 +27,13 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_logOut">Log out</string>
     <string name="emailPlaceHldr">Email@domain.com</string>
     <string name="passwordPlacehldr">Password</string>
     <string name="emailPlacehldr">Email</string>
     <string name="jonathansName">Mickey</string>
     <string name="username">Username \n Email Address \n Other optional user information</string>
-    <string name="emptyString" />
+    <string name="emptyString"> </string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="SettingsTitle">Settings</string>
     <string name="Notifications">Notifications</string>
@@ -118,7 +118,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="zipText">Turn on the location setting or enter a Zip code so that MyPet can
         search for posts by you current location</string>
-    <string name="petName">Pet Name:</string>
     <string name="speciesText">Species:</string>
     <string name="breedText">Breed:</string>
     <string name="markingsText">Markings:</string>
@@ -139,4 +138,16 @@
     <string name="currentUserLastName">Last</string>
     <string name="saveChangesButtonText">Save Changes</string>
     <string name="petProfileEditor">Pet Profile Editor</string>
+    <string name="petName">Name: Dasiy </string>
+    <string name="profileUseName">\@userName</string>
+    <string name="firstName">Maddie</string>
+    <string name="lastName">Robinson</string>
+    <string name="address">123 Main Street "\n" Radford, VA "\n" 22421 </string>
+    <string name="email">email@email.com</string>
+    <string name="petProfileName">Name: Daisy </string>
+    <string name="petAge">Age: 6 months</string>
+    <string name="species">Species: Dog</string>
+    <string name="breed">Breed: Bull Dog </string>
+    <string name="markings">Markings: Tatted </string>
+    <string name="rabies">Rabies Tag#: 9185646 </string>
 </resources>
