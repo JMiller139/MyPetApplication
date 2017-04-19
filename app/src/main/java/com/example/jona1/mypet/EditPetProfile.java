@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -55,6 +56,22 @@ public class EditPetProfile extends AppCompatActivity {
 
                             EditText changePetName = (EditText) findViewById(R.id.changePetName);
                             changePetName.setText(petName);
+                            EditText changePetBreed = (EditText) findViewById(R.id.changePetBreed);
+                            changePetBreed.setText(breed);
+                            EditText changePetMarkings = (EditText) findViewById(R.id.changePetMarkings);
+                            changePetMarkings.setText(markings);
+                            EditText changeRNumber = (EditText) findViewById(R.id.changeRNumber);
+                            changeRNumber.setText(rabiesTagNum);
+                            Switch changeBiteStatus = (Switch) findViewById(R.id.changeBiteStatus);
+                            if(biteStatus == "1");{
+                                changeBiteStatus.setChecked(true);
+                            }
+                            EditText changeNotes = (EditText) findViewById(R.id.changeNotes);
+                            changeNotes.setText(notes);
+                            Switch lostSwitch = (Switch) findViewById(R.id.lostSwitch);
+                            if(missingStatus == "1"){
+                                lostSwitch.setChecked(true);
+                            }
 
                         }catch (JSONException e){
 
