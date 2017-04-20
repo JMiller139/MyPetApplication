@@ -85,7 +85,13 @@ public class MainScreenActivity extends AppCompatActivity
 
                             TextView tv = (TextView) findViewById(R.id.TVusername);
                             tv.setText("Welcome back "+ fName);
-
+                            View headerView = navigationView.getHeaderView(0);
+                            TextView navUsername;
+                            navUsername = (TextView) headerView.findViewById(R.id.mainNavUsrName);
+                            navUsername.setText(fName);
+                            TextView navEmail;
+                            navEmail = (TextView) headerView.findViewById(R.id.mainNavEmail);
+                            navEmail.setText(email);
 
                         }catch (JSONException e){
 

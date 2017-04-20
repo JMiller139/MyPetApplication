@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                if(s.equalsIgnoreCase("success")){
+                if(s.matches(".*\\d+.*")){
                     //changed intent from content_main_screen
                     Intent intent = new Intent(LoginActivity.this,MainScreenActivity.class);
                     intent.putExtra(USER_NAME,username);

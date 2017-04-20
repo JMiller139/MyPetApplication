@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +14,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private final String TAG = "test";
+    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+
+    private String fName = "";
+    private String lName = "";
+    private String address = "";
+    private String username = "";
+    private String email = "";
+    private String photo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +60,45 @@ public class UserProfileActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject ro = new JSONObject(response);
+                            JSONArray ra = ro.getJSONArray("result");
+                            JSONObject userData = ra.getJSONObject(0);
+                            fName = userData.getString("fname");
+                            lName = userData.getString("lname");
+                            address = userData.getString("address");
+                            username = userData.getString("username");
+                            email = userData.getString("email");
+                            //photo = userData.getString("photo");
+
+                            View headerView = navigationView.getHeaderView(0);
+                            TextView navUsername;
+                            navUsername = (TextView) headerView.findViewById(R.id.profileNavUsrName);
+                            navUsername.setText(fName);
+                            TextView navEmail;
+                            navEmail = (TextView) headerView.findViewById(R.id.profileNavEmail);
+                            navEmail.setText(email);
+                        }catch (JSONException e){
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i(TAG,"error");
+                    }
+                });
+
+        MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
     }
 
     @Override
