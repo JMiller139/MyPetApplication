@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 import java.util.HashMap;
 
+
 import android.util.Log;
 
 public class CreatePetProfileActivity extends AppCompatActivity implements View.OnClickListener{
@@ -26,7 +27,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
 
     private static String TAG = "testingMessage";
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php?user_id=1";
 
 
     @Override

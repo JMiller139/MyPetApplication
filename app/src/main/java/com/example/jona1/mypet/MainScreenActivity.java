@@ -64,7 +64,7 @@ public class MainScreenActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
@@ -85,6 +85,8 @@ public class MainScreenActivity extends AppCompatActivity
 
                             TextView tv = (TextView) findViewById(R.id.TVusername);
                             tv.setText("Welcome back "+ fName);
+
+
                         }catch (JSONException e){
 
                         }
