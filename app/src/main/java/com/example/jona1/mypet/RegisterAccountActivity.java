@@ -108,4 +108,7 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         RegisterUser ru = new RegisterUser();
         ru.execute(fname,lname,address,username,password,email);
     }
+
+    public void onCreateAccountClick(View view) {
+    }
 }
