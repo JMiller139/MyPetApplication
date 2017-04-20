@@ -1,86 +1,111 @@
 package com.example.jona1.mypet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.jona1.mypet.R.id.changeAddress;
-import static com.example.jona1.mypet.R.id.changeEmail;
-import static com.example.jona1.mypet.R.id.changeFName;
-import static com.example.jona1.mypet.R.id.changeLName;
-
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String fname;
-    private String lname;
-    private String address;
-    private String email;
-    private String userId;
+
+    private TextView tv;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    public static final String JSON_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php";
+    EditText appBarName,appBarEmail, profileFName,profileLName, profileAddress, profileEmail;
+    private static final String userData = "USER_DATA";
+    NavigationView navigationView;
+    private static final String TAG_RESULT = "result";
+    private static final String TAG_FNAME = "fname";
+    private static final String TAG_LNAME = "lname";
+    private static final String TAG_ADDRESS = "address";
+    private static final String TAG_USERNAME = "username";
+    private static final String TAG_EMAIL = "email";
+    private static final String USER_DATA = "USER_DATA";
+    private final String TAG= "test";
+    String appBarNameDis;
+    private static final String INFO = "INFO";
+    private static final String USER_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+    RequestQueue requestQueue;
+    String userID="1";
 
 
-    private final String TAG = "test";
 
-    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        Button buttonRegister = (Button) findViewById(R.id.saveChangesButton);
-        buttonRegister.setOnClickListener(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
+        Intent intent = getIntent();
+        this.tv = (TextView) findViewById(R.id.TVusername);
+        getUserInfo();
+    }
+    public void getUserInfo() {
+
+        requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
                 new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            JSONObject ro = new JSONObject(response);
-                            JSONArray ra = ro.getJSONArray("result");
-                            JSONObject userData = ra.getJSONObject(0);
-                            userId = userData.getString("user_id");
-                            fname = userData.getString("fname");
-                            lname = userData.getString("lname");
-                            address = userData.getString("address");
-                            email = userData.getString("email");
-
-                            EditText changeFname = (EditText) findViewById(changeFName);
-                            changeFname.setText(fname);
-
-                            EditText changeLname = (EditText) findViewById(changeLName);
-                            changeLname.setText(lname);
-
-                            EditText changeADDress = (EditText) findViewById(changeAddress);
-                            changeADDress.setText(address);
-
-                            EditText changeEMAIL = (EditText) findViewById(changeEmail);
-                            changeEMAIL.setText(email);
-
-
-                        }catch (JSONException ignored){
-
-                        }
+                        showJSON(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i(TAG,"error");
+                        Log.i(TAG,error.toString());
                     }
                 });
+        requestQueue.add(stringRequest);
+    }
+    public void showJSON(String response){
+        String fName = "";
+        String lName = "";
+        String email = "";
+        String address = "";
+        appBarNameDis = "";
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray result = jsonObject.getJSONArray(TAG_RESULT);
+            JSONObject userData = result.getJSONObject(0);
+            fName = (userData.getString(TAG_FNAME));
+            lName = userData.getString(TAG_LNAME);
+            email = userData.getString(TAG_EMAIL);
+            address = userData.getString(TAG_ADDRESS);
+            appBarNameDis += fName+" "+lName;
+            Log.i(TAG,fName);
+            this.profileFName = (EditText) findViewById(R.id.changeFName);
+            this.profileLName = (EditText) findViewById(R.id.changeLName);
+            this.profileEmail = (EditText) findViewById(R.id.changeEmail);
+            this.profileAddress = (EditText) findViewById(R.id.changeAddress);
 
-        MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+            profileFName.setText(fName);
+            profileLName.setText(lName);
+            profileEmail.setText(email);
+            profileAddress.setText(address);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
