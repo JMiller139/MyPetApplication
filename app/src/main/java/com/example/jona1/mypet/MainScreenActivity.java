@@ -48,6 +48,8 @@ public class MainScreenActivity extends AppCompatActivity
     private String username;
     private String email;
     private String photo;
+    private String fullName;
+    private String userID;
 
     private RecyclerView mRecyclerView ;
     private RecyclerView.Adapter mAdapter;
@@ -81,8 +83,14 @@ public class MainScreenActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
+        fullName = "";
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -97,13 +105,13 @@ public class MainScreenActivity extends AppCompatActivity
                             email = userData.getString("email");
                             //photo = userData.getString("photo");
                             Log.i(TAG,fName);
-
+                            fullName = (fName+" "+lName);
                             TextView tv = (TextView) findViewById(R.id.TVusername);
                             tv.setText("Welcome back "+ fName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
                             navUsername = (TextView) headerView.findViewById(R.id.mainNavUsrName);
-                            navUsername.setText(fName);
+                            navUsername.setText(fullName);
                             TextView navEmail;
                             navEmail = (TextView) headerView.findViewById(R.id.mainNavEmail);
                             navEmail.setText(email);

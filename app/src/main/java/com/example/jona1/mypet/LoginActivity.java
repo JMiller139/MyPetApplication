@@ -26,6 +26,7 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String USER_NAME = "USER_NAME";
+    public static final String USER_ID="USER_ID";
     public static final String PASSWORD = "PASSWORD";
 
     private static final String LOGIN_URL = "https://php.radford.edu/~team04/userRegistration/login.php";
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(s.matches(".*\\d+.*")){
                     //changed intent from content_main_screen
                     Intent intent = new Intent(LoginActivity.this,MainScreenActivity.class);
-                    intent.putExtra(USER_NAME,username);
+                    intent.putExtra(USER_ID,s);
                     startActivity(intent);
                 }else{
                     Toast.makeText(LoginActivity.this,s,Toast.LENGTH_LONG).show();
