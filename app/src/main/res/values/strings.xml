@@ -157,4 +157,5 @@
     <string name="profileUserName">\@username</string>
     <string name="address">123 Main Street \nRadford, VA\n 22421</string>
     <string name="email">email@email.com</string>
+    <string name="blah">blah</string>
 </resources>
