@@ -152,4 +152,9 @@
     <string name="android_studio_android_com">android.studio@android.com</string>
     <string name="android_studio2">Android Studio</string>
     <string name="android_studio_android_com2">android.studio@android.com</string>
+    <string name="firstName">Maddie</string>
+    <string name="lastName">Robinson</string>
+    <string name="profileUserName">\@username</string>
+    <string name="address">123 Main Street \nRadford, VA\n 22421</string>
+    <string name="email">email@email.com</string>
 </resources>

@@ -8,6 +8,14 @@
     tools:context="com.example.jona1.mypet.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listLostPet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+
+
     <TextView
         android:id="@+id/TVusername"
         android:layout_width="125dp"

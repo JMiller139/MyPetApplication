@@ -126,8 +126,11 @@ public class UserProfileActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logOut) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
