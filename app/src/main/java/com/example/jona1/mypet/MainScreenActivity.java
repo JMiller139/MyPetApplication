@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,15 +17,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
+
+import static com.example.jona1.mypet.EditProfileActivity.JSON_URL;
 //import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity
@@ -39,6 +48,14 @@ public class MainScreenActivity extends AppCompatActivity
     private String username;
     private String email;
     private String photo;
+    private String fullName;
+    private String userID;
+
+    private RecyclerView mRecyclerView ;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    List<DataPet> lostList;
+
 
     private final String TAG = "test";
 
@@ -66,8 +83,14 @@ public class MainScreenActivity extends AppCompatActivity
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
+        fullName = "";
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -82,13 +105,13 @@ public class MainScreenActivity extends AppCompatActivity
                             email = userData.getString("email");
                             //photo = userData.getString("photo");
                             Log.i(TAG,fName);
-
+                            fullName = (fName+" "+lName);
                             TextView tv = (TextView) findViewById(R.id.TVusername);
                             tv.setText("Welcome back "+ fName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
                             navUsername = (TextView) headerView.findViewById(R.id.mainNavUsrName);
-                            navUsername.setText(fName);
+                            navUsername.setText(fullName);
                             TextView navEmail;
                             navEmail = (TextView) headerView.findViewById(R.id.mainNavEmail);
                             navEmail.setText(email);
@@ -106,6 +129,12 @@ public class MainScreenActivity extends AppCompatActivity
                 });
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.listLostPet);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
@@ -134,8 +163,11 @@ public class MainScreenActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logOut) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -168,4 +200,31 @@ public class MainScreenActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void SendRequest(){
+        StringRequest stringRequest = new StringRequest(JSON_URL,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        JSONParser jsonParser = new JSONParser(response);
+                        jsonParser.parseJSON();
+                        lostList = jsonParser.getLostPets();
+                        mAdapter = new AdapterPet(lostList);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainScreenActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+
+
 }
