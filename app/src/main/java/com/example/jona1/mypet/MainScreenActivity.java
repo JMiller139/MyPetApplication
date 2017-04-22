@@ -2,6 +2,7 @@ package com.example.jona1.mypet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,8 +33,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-import static com.example.jona1.mypet.EditProfileActivity.JSON_URL;
-//import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +40,7 @@ public class MainScreenActivity extends AppCompatActivity
     private TextView tv;
 
     private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+    private static final String JSON_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
 
     private String fName;
     private String lName;
@@ -165,7 +165,7 @@ public class MainScreenActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logOut) {
             Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             this.finish();
         }
@@ -175,7 +175,7 @@ public class MainScreenActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
