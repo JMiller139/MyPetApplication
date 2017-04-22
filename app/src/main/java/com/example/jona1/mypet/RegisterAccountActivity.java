@@ -1,26 +1,15 @@
 package com.example.jona1.mypet;
 
 
-// saustin4
         import android.app.ProgressDialog;
         import android.os.AsyncTask;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        //import android.view.Menu;
-        //import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Toast;
-
-        //import java.io.BufferedReader;
-        //import java.io.InputStreamReader;
-        //import java.io.UnsupportedEncodingException;
-        //import java.net.HttpURLConnection;
-        //import java.net.URL;
-        //import java.net.URLEncoder;
         import java.util.HashMap;
-        //import java.util.Map;
 
 public class RegisterAccountActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -109,6 +98,5 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         ru.execute(fname,lname,address,username,password,email);
     }
 
-    public void onCreateAccountClick(View view) {
-    }
+
 }

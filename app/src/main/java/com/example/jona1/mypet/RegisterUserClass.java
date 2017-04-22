@@ -1,7 +1,8 @@
 package com.example.jona1.mypet;
 
 
-//import org.apache.http.HttpException;
+
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,7 +15,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import android.util.Log;
 
 import javax.net.ssl.HttpsURLConnection;
 
