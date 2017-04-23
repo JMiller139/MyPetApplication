@@ -42,9 +42,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private final String TAG= "test";
     String appBarNameDis;
     private static final String INFO = "INFO";
-    private static final String USER_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+    private static final String USER_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
     RequestQueue requestQueue;
-    String userID="1";
+    String userID;
 
 
 
@@ -54,14 +54,19 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        Intent intent = getIntent();
         this.tv = (TextView) findViewById(R.id.TVusername);
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
         getUserInfo();
     }
     public void getUserInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest(USER_URL+userID,
                 new Response.Listener<String>() {
 
                     @Override
