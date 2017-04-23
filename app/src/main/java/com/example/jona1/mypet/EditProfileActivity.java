@@ -47,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/hey.php";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updateUser.php?user_id=1";
 
     // end register new user info
 
