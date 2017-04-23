@@ -72,7 +72,7 @@ public class UserProfileActivity extends AppCompatActivity
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL+userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -94,6 +94,18 @@ public class UserProfileActivity extends AppCompatActivity
                             TextView navEmail;
                             navEmail = (TextView) headerView.findViewById(R.id.profileNavEmail);
                             navEmail.setText(email);
+
+                            TextView firstName = (TextView) findViewById(R.id.firstName);
+                            firstName.setText(fName);
+                            TextView lastName = (TextView) findViewById(R.id.lastName);
+                            lastName.setText(lName);
+                            TextView userName = (TextView) findViewById(R.id.userName);
+                            userName.setText(username);
+                            TextView addressTV = (TextView) findViewById(R.id.address);
+                            addressTV.setText(address);
+                            TextView emailTV = (TextView) findViewById(R.id.email);
+                            emailTV.setText(email);
+
                         }catch (JSONException e){
 
                         }
