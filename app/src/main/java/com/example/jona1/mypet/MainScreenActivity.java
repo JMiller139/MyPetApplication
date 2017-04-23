@@ -40,7 +40,9 @@ public class MainScreenActivity extends AppCompatActivity
 
     private TextView tv;
 
-    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+    public static final String USER_ID="USER_ID";
+
+    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
 
     private String fName;
     private String lName;
@@ -90,7 +92,7 @@ public class MainScreenActivity extends AppCompatActivity
         if(b!=null){
             userID = (String) b.get("USER_ID");
         }
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL+userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -184,6 +186,7 @@ public class MainScreenActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, UserProfileActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         } else if (id == R.id.nav_map) {
             Intent intent = new Intent(this, MapsActivity.class);

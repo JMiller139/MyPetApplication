@@ -1,5 +1,6 @@
 package com.example.jona1.mypet;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,11 +31,19 @@ public class EditPetProfile extends AppCompatActivity {
     private String rabiesTagNum;
     private String biteStatus;
     private String notes;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_pet_profile);
+
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_PET_INFO_URL,
                 new Response.Listener<String>() {

@@ -1,6 +1,7 @@
 package com.example.jona1.mypet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,16 +25,24 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
     private Switch bite;
     private EditText notes;
     private Button buttonRegister;
+    private String userID;
 
     private static String TAG = "testingMessage";
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php?user_id=1";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/petRegister.php?user_id=";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_pet_profile);
+
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
 
         this.petName = (EditText) findViewById(R.id.petNameTextField);
         this.species = (EditText) findViewById(R.id.speciesEditText);
@@ -65,11 +74,11 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
         String pNotes = getNotes();
         String pPhoto = getPhoto();
 
-        register(pName, pSpecies, pBreed , pPhoto, pMarkings, pRabies, pBite, pNotes);
+        register(pName, pSpecies, pBreed , pPhoto, pMarkings, pRabies, pBite, pNotes, userID);
     }
 
     private void register(String pName, String pSpecies, String pBreed , String pPhoto, String pMarkings,
-                          String pRabies, String pBite, String pNotes) {
+                          String pRabies, String pBite, String pNotes, final String userID) {
         class RegisterUser extends AsyncTask<String, Void, String>{
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -99,14 +108,15 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
                 data.put("bite_status",params[5]);
                 data.put("notes",params[6]);
                 data.put("photo",params[7]);
+                data.put("user_id",params[8]);
 
-                return  ruc.sendPostRequest(REGISTER_URL,data);
+                return  ruc.sendPostRequest(REGISTER_URL+userID,data);
             }
         }
 
         RegisterUser ru = new RegisterUser();
         Log.i(TAG, "before ru.execute");
-        ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes,pPhoto); //Pass bite as a string
+        ru.execute(pName,pSpecies,pBreed,pMarkings,pRabies,pBite,pNotes,pPhoto, userID); //Pass bite as a string
         Log.i(TAG, "ru.execute success");
     }
 

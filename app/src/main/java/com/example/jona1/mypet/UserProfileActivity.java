@@ -29,7 +29,8 @@ public class UserProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final String TAG = "test";
-    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=1";
+    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
+    public static final String USER_ID="USER_ID";
 
     private String fName = "";
     private String lName = "";
@@ -37,6 +38,7 @@ public class UserProfileActivity extends AppCompatActivity
     private String username = "";
     private String email = "";
     private String photo = "";
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,13 @@ public class UserProfileActivity extends AppCompatActivity
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -164,16 +173,19 @@ public class UserProfileActivity extends AppCompatActivity
 
     public void addPet(View v){
         Intent intent = new Intent(UserProfileActivity.this, CreatePetProfileActivity.class);
+        intent.putExtra(USER_ID,userID);
         startActivity(intent);
     }
 
     public void addEditUser(View v){
         Intent intent = new Intent(UserProfileActivity.this, EditProfileActivity.class);
+        intent.putExtra(USER_ID,userID);
         startActivity(intent);
     }
 
     public void editPet(View v){
         Intent intent = new Intent(UserProfileActivity.this, EditPetProfile.class);
+        intent.putExtra(USER_ID,userID);
         startActivity(intent);
     }
 }
