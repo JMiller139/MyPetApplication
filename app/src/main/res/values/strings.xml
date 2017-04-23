@@ -97,6 +97,18 @@
         <item>Entry 3</item>
     </string-array>
 
+    <string name="radius_label">Radius</string>
+    <string name="radius_caption">The maximum distance from you that you would like
+        to see posts and get notifications from</string>
+    <string-array name="radius_options">
+        <item>1 mile</item>
+        <item>5 miles</item>
+        <item>10 miles</item>
+        <item>20 miles</item>
+        <item>50 miles</item>
+        <item>Everywhere</item>
+    </string-array>
+
     <string-array name="list_preference_entry_values">
         <item>1</item>
         <item>2</item>

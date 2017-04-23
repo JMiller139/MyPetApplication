@@ -71,14 +71,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/selectPetPicture"
-                android:layout_marginTop="10dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:text="Name"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:layout_below="@+id/selectPetPicture"
+                android:layout_alignLeft="@+id/changePetBreed"
+                android:layout_alignStart="@+id/changePetBreed" />
 
             <EditText
                 android:id="@+id/changePetBreed"
@@ -156,7 +156,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/savePetChanges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lostSwitch"
