@@ -32,8 +32,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-import static com.example.jona1.mypet.EditProfileActivity.JSON_URL;
-//import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +41,7 @@ public class MainScreenActivity extends AppCompatActivity
     public static final String USER_ID="USER_ID";
 
     private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
+    private static final String JSON_URL = "";
 
     private String fName;
     private String lName;

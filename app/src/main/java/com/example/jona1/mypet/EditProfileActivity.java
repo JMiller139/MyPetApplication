@@ -1,14 +1,14 @@
 package com.example.jona1.mypet;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,53 +20,113 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private TextView tv;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    public static final String JSON_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php";
-    EditText appBarName,appBarEmail, profileFName,profileLName, profileAddress, profileEmail;
-    private static final String userData = "USER_DATA";
-    NavigationView navigationView;
+    EditText profileFName,profileLName, profileAddress, profileEmail;
+
     private static final String TAG_RESULT = "result";
     private static final String TAG_FNAME = "fname";
     private static final String TAG_LNAME = "lname";
     private static final String TAG_ADDRESS = "address";
-    private static final String TAG_USERNAME = "username";
     private static final String TAG_EMAIL = "email";
-    private static final String USER_DATA = "USER_DATA";
     private final String TAG= "test";
     String appBarNameDis;
-    private static final String INFO = "INFO";
-    private static final String USER_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
     RequestQueue requestQueue;
-    String userID;
+    String userID="1";
 
+    // register new user info
 
+    private EditText editTextEmail;
+    private EditText editTextFname;
+    private EditText editTextLname;
+    private EditText editTextAddress;
 
+    private Button buttonRegister;
 
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/hey.php";
+
+    // end register new user info
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        this.tv = (TextView) findViewById(R.id.TVusername);
-        userID = "";
-        Intent intent = getIntent();
-        Bundle b = intent.getExtras();
-        if(b!=null){
-            userID = (String) b.get("USER_ID");
-        }
         getUserInfo();
+
+        editTextEmail = (EditText) findViewById(R.id.changeEmail);
+        editTextFname = (EditText) findViewById(R.id.changeFName);
+        editTextLname = (EditText) findViewById(R.id.changeLName);
+        editTextAddress = (EditText) findViewById(R.id.changeAddress);
+
+        buttonRegister = (Button) findViewById(R.id.saveChangesButton);
+
+        buttonRegister.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        if(v == buttonRegister){
+            registerUser();
+        }
+    }
+
+
+    private void registerUser() {
+
+
+        String email = editTextEmail.getText().toString().trim().toLowerCase();
+        String fname = editTextFname.getText().toString().trim().toLowerCase();
+        String lname = editTextLname.getText().toString().trim().toLowerCase();
+        String address = editTextAddress.getText().toString().trim().toLowerCase();
+
+
+        register(email,fname,lname,address);
+    }
+
+    private void register(String email, String fname, String lname, String address) {
+        class RegisterUser extends AsyncTask<String, Void, String> {
+            private ProgressDialog loading;
+            private RegisterUserClass ruc = new RegisterUserClass();
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(EditProfileActivity.this, "Please Wait",null, true, true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                HashMap<String, String> data = new HashMap<>();
+                data.put("fname",params[0]);
+                data.put("lname",params[1]);
+                data.put("address",params[2]);
+                data.put("email",params[3]);
+
+                return  ruc.sendPostRequest(REGISTER_URL,data);
+            }
+        }
+
+        RegisterUser ru = new RegisterUser();
+        ru.execute(fname,lname,address,email);
+    }
+
+
     public void getUserInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(USER_URL+userID,
+        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
                 new Response.Listener<String>() {
 
                     @Override
@@ -83,10 +143,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         requestQueue.add(stringRequest);
     }
     public void showJSON(String response){
-        String fName = "";
-        String lName = "";
-        String email = "";
-        String address = "";
+        String fName ;
+        String lName ;
+        String email ;
+        String address ;
         appBarNameDis = "";
         try{
             JSONObject jsonObject = new JSONObject(response);
@@ -113,8 +173,5 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }
