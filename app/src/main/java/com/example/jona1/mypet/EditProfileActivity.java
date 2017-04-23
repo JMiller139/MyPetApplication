@@ -54,7 +54,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        this.tv = (TextView) findViewById(R.id.TVusername);
         userID = "";
         Intent intent = getIntent();
         Bundle b = intent.getExtras();

@@ -158,4 +158,8 @@
     <string name="address">123 Main Street \nRadford, VA\n 22421</string>
     <string name="email">email@email.com</string>
     <string name="blah">blah</string>
+    <string name="title_activity_main__tab_activity_1">MainActivity_TabActivity_1</string>
+    <string name="LostPageTitle">Lost Pets Page</string>
+    <string name="goToFoundPage">Go To Found Page</string>
+    <string name="lostPetsPage">Lost Pets Page</string>
 </resources>

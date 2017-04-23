@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TabHost;
+import android.widget.TabWidget;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import android.widget.TabHost.TabSpec;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,8 +111,6 @@ public class MainScreenActivity extends AppCompatActivity
                             //photo = userData.getString("photo");
                             Log.i(TAG,fName);
                             fullName = (fName+" "+lName);
-                            TextView tv = (TextView) findViewById(R.id.TVusername);
-                            tv.setText("Welcome back "+ fName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
                             navUsername = (TextView) headerView.findViewById(R.id.mainNavUsrName);
@@ -131,12 +132,6 @@ public class MainScreenActivity extends AppCompatActivity
                 });
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.listLostPet);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 

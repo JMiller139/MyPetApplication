@@ -20,8 +20,8 @@ public class EditPetProfile extends AppCompatActivity {
 
     private final String TAG = "test";
 
-    private static final String GET_PET_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=1";
-
+    private static final String GET_PET_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=";
+//fix id
     private String petId;
     private String petName;
     private String species;
@@ -45,7 +45,7 @@ public class EditPetProfile extends AppCompatActivity {
             userID = (String) b.get("USER_ID");
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_PET_INFO_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_PET_INFO_URL+userID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
