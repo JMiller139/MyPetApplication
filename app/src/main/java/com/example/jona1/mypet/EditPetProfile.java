@@ -36,7 +36,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
     private final String TAG= "test";
     String appBarNameDis;
     RequestQueue requestQueue;
-    String userID="18";
+    String userID="1";
 
     // register new user info
 
@@ -47,7 +47,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/hey.php?user_id=18";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/hey.php?user_id=1";
 
     // end register new user info
 
