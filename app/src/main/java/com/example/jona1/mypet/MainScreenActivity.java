@@ -109,7 +109,6 @@ public class MainScreenActivity extends AppCompatActivity
                             username = userData.getString("username");
                             email = userData.getString("email");
                             //photo = userData.getString("photo");
-                            Log.i(TAG,fName);
                             fullName = (fName+" "+lName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
@@ -178,6 +177,7 @@ public class MainScreenActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent intent = new Intent(this, MainScreenActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, UserProfileActivity.class);
@@ -185,9 +185,11 @@ public class MainScreenActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_map) {
             Intent intent = new Intent(this, MapsActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(this, SettingActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         }
         else if (id == R.id.nav_inbox) {
@@ -223,7 +225,9 @@ public class MainScreenActivity extends AppCompatActivity
     }
 
     public void changeToFound(View v){
-        setContentView(R.layout.content_main_screen_found);
+        Intent intent = new Intent(this, FoundPage.class);
+        intent.putExtra(USER_ID,userID);
+        startActivity(intent);
     }
 
 

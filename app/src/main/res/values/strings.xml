@@ -175,4 +175,5 @@
     <string name="goToFoundPage">Go To Found Page</string>
     <string name="lostPetsPage">Lost Pets Page</string>
     <string name="foundPetsPage">Found Pets Page</string>
+    <string name="title_activity_found_page">FoundPage</string>
 </resources>

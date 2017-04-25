@@ -65,6 +65,10 @@
         <activity android:name=".CreatePetProfileActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".EditPetProfile" />
+        <activity
+            android:name=".FoundPage"
+            android:label="@string/title_activity_main_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
