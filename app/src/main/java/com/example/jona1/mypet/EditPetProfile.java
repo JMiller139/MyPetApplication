@@ -47,7 +47,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updatePet.php?user_id=";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/hey.php?user_id=1";
 
     // end register new user info
 
