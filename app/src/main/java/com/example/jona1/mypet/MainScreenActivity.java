@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Interpolator;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TabHost;
@@ -219,6 +220,10 @@ public class MainScreenActivity extends AppCompatActivity
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void changeToFound(View v){
+        setContentView(R.layout.content_main_screen_found);
     }
 
 

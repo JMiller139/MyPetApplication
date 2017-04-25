@@ -174,4 +174,5 @@
     <string name="LostPageTitle">Lost Pets Page</string>
     <string name="goToFoundPage">Go To Found Page</string>
     <string name="lostPetsPage">Lost Pets Page</string>
+    <string name="foundPetsPage">Found Pets Page</string>
 </resources>

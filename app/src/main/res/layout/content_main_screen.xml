@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.jona1.mypet.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen">
 
@@ -15,16 +14,17 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/LostPageTitle"
         android:textAlignment="center"
         android:textColor="@color/wallet_bright_foreground_holo_light"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="66dp" />
 
     <Button
         android:id="@+id/foudPageButton"
@@ -36,6 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="changeToFound"
         android:text="@string/goToFoundPage"
         android:textColor="@color/wallet_bright_foreground_holo_light"
         app:layout_constraintHorizontal_bias="0.0"
