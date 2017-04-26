@@ -68,7 +68,8 @@
         <activity
             android:name=".FoundPage"
             android:label="@string/title_activity_main_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateAFoundPost"></activity>
     </application>
 
 </manifest>

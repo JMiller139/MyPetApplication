@@ -221,4 +221,10 @@ public class FoundPage extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void createFoundPost(View v){
+        Intent intent = new Intent(this, CreateAFoundPost.class);
+        intent.putExtra(USER_ID,userID);
+        startActivity(intent);
+    }
+
 }
