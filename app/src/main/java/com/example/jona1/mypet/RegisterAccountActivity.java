@@ -30,6 +30,10 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
     private EditText editTextFname;
     private EditText editTextLname;
     private EditText editTextAddress;
+    private EditText editTextConfirmPassword;
+    private EditText editTextConfirmEmail;
+
+    private static final String EMAIL_PATTERN ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
     private Button buttonRegister;
@@ -48,6 +52,8 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         editTextFname = (EditText) findViewById(R.id.fnameEditText);
         editTextLname = (EditText) findViewById(R.id.lnameEditText);
         editTextAddress = (EditText) findViewById(R.id.addressEditText);
+        editTextConfirmPassword = (EditText) findViewById(R.id.confirmPasswordEditText);
+        editTextConfirmEmail = (EditText) findViewById(R.id.confirmEmailEditText);
 
         buttonRegister = (Button) findViewById(R.id.createAccountButton);
 
@@ -68,8 +74,20 @@ public class RegisterAccountActivity extends AppCompatActivity implements View.O
         String fname = editTextFname.getText().toString().trim().toLowerCase();
         String lname = editTextLname.getText().toString().trim().toLowerCase();
         String address = editTextAddress.getText().toString().trim().toLowerCase();
+        String confirmPassword = editTextConfirmPassword.getText().toString().trim().toLowerCase();
+        String confirmEmail = editTextConfirmEmail.getText().toString().trim().toLowerCase();
+        if(email.matches(confirmEmail)){
 
-        register(username,password,email,fname,lname,address);
+            if(email.matches(EMAIL_PATTERN)) {
+
+                if (password.matches(confirmPassword)) {
+                    register(username,password,email,fname,lname,address);
+                } else { Toast.makeText(this, "Passwords Do Not Match", Toast.LENGTH_LONG).show();}
+
+            }else{Toast.makeText(this, "Invalid Email", Toast.LENGTH_LONG).show();}
+
+        }else{ Toast.makeText(this, "Emails Do Not Match",Toast.LENGTH_LONG).show();}
+
     }
 
     private void register(String username, String password, String email, String fname, String lname, String address) {
