@@ -3,36 +3,31 @@ package com.example.jona1.mypet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
-import static com.example.jona1.mypet.EditProfileActivity.JSON_URL;
 //import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity
@@ -106,7 +101,6 @@ public class MainScreenActivity extends AppCompatActivity
                             username = userData.getString("username");
                             email = userData.getString("email");
                             //photo = userData.getString("photo");
-                            Log.i(TAG,fName);
                             fullName = (fName+" "+lName);
                             TextView tv = (TextView) findViewById(R.id.TVusername);
                             tv.setText("Welcome back "+ fName);
@@ -203,29 +197,28 @@ public class MainScreenActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    public void SendRequest(){
-        StringRequest stringRequest = new StringRequest(JSON_URL,
-                new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-                        JSONParser jsonParser = new JSONParser(response);
-                        jsonParser.parseJSON();
-                        lostList = jsonParser.getLostPets();
-                        mAdapter = new AdapterPet(lostList);
-                        mRecyclerView.setAdapter(mAdapter);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainScreenActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
+//    public void SendRequest(){
+//        StringRequest stringRequest = new StringRequest(JSON_URL,
+//                new Response.Listener<String>() {
+//
+//                    @Override
+//                    public void onResponse(String response) {
+//                        JSONParser jsonParser = new JSONParser(response);
+//                        jsonParser.parseJSON();
+//                        lostList = jsonParser.getPets();
+//                        mAdapter = new AdapterPet(lostList);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(MainScreenActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//    }
 
 
 

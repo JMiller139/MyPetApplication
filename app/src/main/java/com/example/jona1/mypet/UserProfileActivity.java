@@ -1,35 +1,47 @@
 package com.example.jona1.mypet;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private final String TAG = "test";
     private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
+    private static final String GET_USER_PETS = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=";
     public static final String USER_ID="USER_ID";
 
     private String fName = "";
@@ -39,6 +51,14 @@ public class UserProfileActivity extends AppCompatActivity
     private String email = "";
     private String photo = "";
     private String userID;
+    private RecyclerView mRecyclerView ;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private List<DataPet> petList = new ArrayList<DataPet>();
+    private PetListAdapter adapter;
+    private ListView listView;
+    private ProgressDialog pDialog;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +66,8 @@ public class UserProfileActivity extends AppCompatActivity
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         userID = "";
         Intent intent = getIntent();
@@ -90,7 +112,7 @@ public class UserProfileActivity extends AppCompatActivity
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
                             navUsername = (TextView) headerView.findViewById(R.id.profileNavUsrName);
-                            navUsername.setText(fName);
+                            navUsername.setText(fName+" "+lName);
                             TextView navEmail;
                             navEmail = (TextView) headerView.findViewById(R.id.profileNavEmail);
                             navEmail.setText(email);
@@ -119,7 +141,11 @@ public class UserProfileActivity extends AppCompatActivity
                 });
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
+        context = getApplicationContext();
+        listView = (ListView) findViewById(R.id.petList);
+        adapter = new PetListAdapter(UserProfileActivity.this,petList);
+        listView.setAdapter(adapter);
+        getPetInfo();
     }
 
     @Override
@@ -199,6 +225,75 @@ public class UserProfileActivity extends AppCompatActivity
         Intent intent = new Intent(UserProfileActivity.this, EditPetProfile.class);
         intent.putExtra(USER_ID,userID);
         startActivity(intent);
+    }
+    public void getPetInfo(){
+        pDialog = new ProgressDialog(UserProfileActivity.this);
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET,GET_USER_PETS+userID,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        hidePDialog();
+//                        JSONParser jsonParser = new JSONParser(response);
+//                        jsonParser.parseJSON();
+//                        petList = jsonParser.getPets();
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        VolleyLog.d(TAG,"Error: " + error.getMessage());
+//                        Toast.makeText(UserProfileActivity.this,error.getMessage(), Toast.LENGTH_LONG).show();
+//                        hidePDialog();
+//                    }
+//               });
+//        AppController.getInstance().addToRequestQueue(stringRequest);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        JsonObjectRequest petListReq = new JsonObjectRequest(Request.Method.GET,GET_USER_PETS+userID,null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i(TAG,response.toString());
+                        hidePDialog();
+                        try {
+                            JSONArray ra = response.getJSONArray("result");
+                                 for(int i=0; i<ra.length(); i++) {
+                                     JSONObject obj = ra.getJSONObject(i);
+                                     DataPet currentPet = new DataPet();
+                                     currentPet.SetPetName(obj.getString("name"));
+                                     currentPet.SetBreed(obj.getString("breed"));
+                                     currentPet.SetSpecies(obj.getString("species"));
+                                     petList.add(currentPet);
+                                 }
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                            adapter.notifyDataSetChanged();
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        VolleyLog.d(TAG,"Error: it didn't work");
+                        hidePDialog();
+                    }
+
+                });
+        AppController.getInstance().addToRequestQueue(petListReq);
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hidePDialog();
     }
 }
 

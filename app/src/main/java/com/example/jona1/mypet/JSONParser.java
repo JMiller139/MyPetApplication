@@ -1,5 +1,7 @@
 package com.example.jona1.mypet;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,34 +19,40 @@ public class JSONParser {
     public static String[] breeds;
     public static String[] species;
     public static String[] markings;
-    private JSONArray lostPets = null;
+    private final String TAG = "test";
+    private JSONArray userPets = null;
 
-    List<DataPet> LostPets;
+    private List<DataPet> UserPets;
 
-    private String json;
+    private JSONObject jsonObject;
 
-    public JSONParser(String json){
-        this.json = json;
+    private String response;
+
+    public JSONParser(String response){
+        this.response = response;
     }
 
     protected void parseJSON(){
-        JSONObject jsonObject = null;
 
+        Log.i(TAG,"Before Try");
         try{
-            lostPets = new JSONArray(json);
-            petNames = new String[lostPets.length()];
-            breeds = new String[lostPets.length()];
-            species = new String[lostPets.length()];
-            markings = new String[lostPets.length()];
+            jsonObject = new JSONObject(response);
+            Log.i(TAG,response);
+            userPets = jsonObject.getJSONArray("result");
+            petNames = new String[userPets.length()];
+            breeds = new String[userPets.length()];
+            species = new String[userPets.length()];
+            markings = new String[userPets.length()];
 
-            LostPets = new ArrayList<DataPet>();
+            UserPets = new ArrayList<DataPet>();
 
-            for(int i=0; i<lostPets.length();++i){
+            for(int i=0; i<userPets.length();++i){
                 DataPet pet_object = new DataPet();
 
-                jsonObject = lostPets.getJSONObject(i);
+                jsonObject = userPets.getJSONObject(i);
+                Log.i(TAG,"after initalizing");
 
-                petNames[i] = jsonObject.getString("petName");
+                petNames[i] = jsonObject.getString("name");
                 breeds[i] = jsonObject.getString("breed");
                 species[i] = jsonObject.getString("species");
                 markings[i] = jsonObject.getString("markings");
@@ -58,7 +66,7 @@ public class JSONParser {
             e.printStackTrace();
         }
     }
-    List<DataPet> getLostPets(){
-        return LostPets;
+    List<DataPet> getPets(){
+        return UserPets;
     }
 }

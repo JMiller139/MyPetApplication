@@ -1,62 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
 
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="14dp"
-
-        android:id="@+id/gameImage"
-        android:paddingBottom="10dp"
-        android:layout_alignParentTop="true"
+    <!-- Thumbnail Image -->
+    <ImageButton
+        android:id="@+id/thumbnail"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+       />
     <TextView
+        android:id="@+id/petName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Devil May Cry"
-        android:textSize="18sp"
-        android:id="@+id/petName"
-        android:paddingLeft="4dp"
-        android:paddingRight="5dp"
-        android:layout_alignTop="@+id/gameImage"
-        android:layout_toRightOf="@+id/gameImage"
-        android:layout_toEndOf="@+id/gameImage" />
+        android:layout_alignTop="@+id/thumbnail"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/PetName"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/breed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/petName"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textSize="@dimen/breed" />
+
+    <TextView
+        android:id="@+id/species"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/breed"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:textColor="@color/genre"
+        android:textSize="@dimen/species" />
+
+    <TextView
+        android:id="@+id/releaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:lines="1"
-        android:ellipsize="end"
-        android:paddingLeft="4dp"
-        android:paddingRight="5dp"
-        android:textSize="12sp"
-        android:id="@+id/breed"
-        android:layout_below="@+id/petName"
-        android:layout_alignLeft="@+id/petName"
-        android:layout_alignStart="@+id/petName"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="@color/year"
+        android:textSize="@dimen/year" />
 
-    <TextView
-        android:id="@+id/speices"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="5dp"
-        android:text="Plateform : PS3, XBOX 360"
-        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
-        android:textSize="12sp"
-        android:layout_below="@+id/breed"
-        android:layout_toRightOf="@+id/gameImage"
-        android:layout_toEndOf="@+id/gameImage" />
+
 
 </RelativeLayout>

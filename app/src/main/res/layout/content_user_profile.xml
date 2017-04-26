@@ -67,6 +67,7 @@
         tools:ignore="RtlHardcoded" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:layout_marginBottom="8dp"
@@ -79,11 +80,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-        android:layout_width=
-        android:layout_height="495dp"
-        android:fillViewport="true"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -103,8 +100,8 @@
                 android:id="@+id/thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:scaleType="centerCrop" />
 
@@ -176,10 +173,41 @@
                 android:textColor="#222"
                 android:textSize="16dp" />
 
-
-            /////////////////////////////////////////////////////////////////////////////////////////
+            <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recycler_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:layout_below="@+id/email"/>-->
+            <ListView
+                android:id="@+id/petList"
+                android:layout_below="@+id/email"
+                android:layout_width="384dp"
+                android:layout_height="514dp"
+                android:divider="@color/list_divider"
+                android:dividerHeight="1dp"
+                android:adjustViewBounds="true"
+                android:listSelector="@drawable/list_row_selector"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="-36dp" />
 
         </RelativeLayout>
     </ScrollView>
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--&gt;-->
+
+        <!---->
+    <!--</LinearLayout>-->
 
 </android.support.constraint.ConstraintLayout>

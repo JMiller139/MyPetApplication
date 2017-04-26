@@ -14,22 +14,15 @@ import java.util.List;
 /**
  * Created by bekal on 4/8/2017.
  */
-
 public class AdapterPet extends RecyclerView.Adapter<AdapterPet.ViewHolder> {
     Context context;
-
+    private final String TAG = "test";
 
     private List<DataPet> lostPet;
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView petName,breed, species;
-        public ImageView petImage;
-
-        public ViewHolder(View v){
-            super(v);
-            petName = (TextView) v.findViewById(R.id.petName);
-            breed = (TextView) v.findViewById(R.id.breed);
-            species = (TextView) v.findViewById(R.id.speices);
-        }
+    
+    public AdapterPet(List<DataPet> mylostPets){
+        super();
+        this.lostPet= mylostPets;
     }
     public void add(int position, DataPet info){
         lostPet.add(position,info);
@@ -40,12 +33,10 @@ public class AdapterPet extends RecyclerView.Adapter<AdapterPet.ViewHolder> {
         lostPet.remove(position);
         notifyItemRemoved(position);
     }
-    public AdapterPet(List<DataPet> mylostPets){
-        lostPet= mylostPets;
-    }
+
     @Override
     public AdapterPet.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_screen, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lost_pet_list, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -53,13 +44,23 @@ public class AdapterPet extends RecyclerView.Adapter<AdapterPet.ViewHolder> {
     @Override
     public void onBindViewHolder(AdapterPet.ViewHolder holder, int position) {
         holder.petName.setText(lostPet.get(position).getPetName());
-        holder.species.setText(lostPet.get(position).getPetName());
-        holder.breed.setText(lostPet.get(position).getPetName());
-//        Glide.with(holder.imageView.getContext()).load(lostPet.get(position).getPetImageUrl()).into(holder.imageView);
+        holder.species.setText(lostPet.get(position).getSpecies());
+        holder.breed.setText(lostPet.get(position).getBreed());
+//      Glide.with(holder.imageView.getContext()).load(lostPet.get(position).getPetImageUrl()).into(holder.imageView);
     }
-
     @Override
     public int getItemCount() {
         return lostPet.size();
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        public TextView petName,breed, species;
+        public ImageView petImage;
+
+        public ViewHolder(View v){
+            super(v);
+            petName = (TextView) v.findViewById(R.id.petName);
+            breed = (TextView) v.findViewById(R.id.breed);
+            species = (TextView) v.findViewById(R.id.species);
+        }
     }
 }

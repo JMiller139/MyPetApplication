@@ -7,4 +7,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="PetName">17dp</dimen>
+    <dimen name="breed">15dip</dimen>
+    <dimen name="species">13dip</dimen>
+    <dimen name="year">12dip</dimen>
 </resources>
