@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jona1.mypet.CreateAFoundPost">
+
+    <ScrollView
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/createAFPost"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/FoundPetsTitle"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/uploadPicture"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_below="@id/createAFPost"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@color/common_action_bar_splitter" />
+
+            <Button
+                android:id="@+id/selectPictureButton"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/uploadPicture"
+                android:layout_centerHorizontal="true"
+                android:text="@string/SelectAPhoto" />
+
+            <TextView
+                android:id="@+id/petNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/selectPictureButton"
+                android:gravity="center_vertical"
+                android:text="@string/petName"
+                android:textAlignment="center"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/petNameTextField"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignBaseline="@+id/petNameTextView"
+                android:layout_alignBottom="@+id/petNameTextView"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/selectPictureButton"
+                android:layout_toRightOf="@+id/petNameTextView"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/speciesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/petNameTextView"
+                android:gravity="center_vertical"
+                android:text="@string/speciesText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/speciesEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/petNameTextView"
+                android:layout_toRightOf="@+id/speciesTextView"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/breedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/speciesTextView"
+                android:gravity="center_vertical"
+                android:text="@string/breedText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/breedEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/speciesEditText"
+                android:layout_toRightOf="@+id/breedTextView"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/markingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/breedTextView"
+                android:gravity="center_vertical"
+                android:text="@string/markingsText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/markingsEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/breedEditText"
+                android:layout_toRightOf="@+id/markingsTextView"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/rabiesTagTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/markingsTextView"
+                android:gravity="center_vertical"
+                android:text="@string/rabiesTagText"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/rabiesEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/markingsEditText"
+                android:layout_toRightOf="@+id/rabiesTagTextView"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/noteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/rabiesTagTextView"
+                android:gravity="center"
+                android:text="@string/Notes"
+                android:textColor="@color/wallet_bright_foreground_holo_light"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/notesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/noteTextView"
+                android:ems="10"
+                android:hint="@string/notesas"
+                android:inputType="textMultiLine" />
+
+
+            <Button
+                android:id="@+id/createFoundButton"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:onClick="createFoundPost"
+                android:text="@string/createFoundButton" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

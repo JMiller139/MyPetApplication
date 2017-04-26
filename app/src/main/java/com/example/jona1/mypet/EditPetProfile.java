@@ -20,7 +20,7 @@ public class EditPetProfile extends AppCompatActivity {
 
     private final String TAG = "test";
 
-    private static final String GET_PET_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=";
+    private static final String GET_PET_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=1";
 
     private String petId;
     private String petName;
@@ -45,12 +45,11 @@ public class EditPetProfile extends AppCompatActivity {
             userID = (String) b.get("USER_ID");
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_PET_INFO_URL+userID,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_PET_INFO_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.i(TAG,response);
                             JSONObject ro = new JSONObject(response);
                             JSONArray ra = ro.getJSONArray("result");
                             JSONObject petData = ra.getJSONObject(0);

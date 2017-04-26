@@ -71,40 +71,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/selectPetPicture"
-                android:layout_marginTop="10dp"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:text="Name"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:layout_below="@+id/selectPetPicture"
+                android:layout_alignLeft="@+id/changePetBreed"
+                android:layout_alignStart="@+id/changePetBreed" />
 
             <EditText
                 android:id="@+id/changePetBreed"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:ems="10"
                 android:layout_below="@id/changePetName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:ems="10"
                 android:gravity="center"
                 android:inputType="textPersonName"
-                android:textSize="16sp"
-                android:text="@string/name5" />
+                android:text="breed"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/changePetMarkings"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_alignLeft="@+id/changeRNumber"
+                android:layout_alignStart="@+id/changeRNumber"
+                android:layout_below="@+id/changePetBreed"
+                android:layout_marginTop="12dp"
                 android:ems="10"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:layout_below="@id/changePetBreed"
-                android:textSize="16sp"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="markings"
+                android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
             <EditText
@@ -112,14 +113,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:layout_below="@id/changePetMarkings"
                 android:inputType="textPersonName"
+                android:text="RNumber"
                 android:textSize="16sp"
-                android:text="Name"
-                tools:ignore="HardcodedText,TextFields" />
+                tools:ignore="HardcodedText,TextFields"
+                android:layout_below="@+id/changePetMarkings"
+                android:layout_alignLeft="@+id/changeNotes"
+                android:layout_alignStart="@+id/changeNotes" />
 
             <Switch
                 android:id="@+id/changeBiteStatus"
@@ -136,13 +137,14 @@
                 android:id="@+id/changeNotes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
                 android:layout_below="@id/changeBiteStatus"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:textSize="16sp"
+                android:ems="10"
                 android:gravity="center"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:text="notes"
+                android:textSize="16sp" />
 
             <Switch
                 android:id="@+id/lostSwitch"
@@ -156,7 +158,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/savePetChanges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lostSwitch"

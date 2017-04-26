@@ -1,31 +1,27 @@
 package com.example.jona1.mypet;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -33,49 +29,38 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class UserProfileActivity extends AppCompatActivity
+public class FoundPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private final String TAG = "test";
-    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
-    private static final String GET_USER_PETS = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=";
     public static final String USER_ID="USER_ID";
 
-    private String fName = "";
-    private String lName = "";
-    private String address = "";
-    private String username = "";
-    private String email = "";
-    private String photo = "";
+    private static final String GET_USER_INFO_URL = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
+    private static final String JSON_URL = "";
+
+    private String fName;
+    private String lName;
+    private String address;
+    private String username;
+    private String email;
+    private String photo;
+    private String fullName;
     private String userID;
+
+    private final String TAG = "test";
+
     private RecyclerView mRecyclerView ;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<DataPet> petList = new ArrayList<DataPet>();
-    private PetListAdapter adapter;
-    private ListView listView;
-    private ProgressDialog pDialog;
-    private Context context;
-    private String fullName;
+    List<DataPet> lostList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_found_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-        userID = "";
-        Intent intent = getIntent();
-        Bundle b = intent.getExtras();
-        if(b!=null){
-            userID = (String) b.get("USER_ID");
-        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +80,13 @@ public class UserProfileActivity extends AppCompatActivity
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        fullName = "";
+        userID = "";
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
         StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_USER_INFO_URL+userID,
                 new Response.Listener<String>() {
                     @Override
@@ -110,26 +102,14 @@ public class UserProfileActivity extends AppCompatActivity
                             email = userData.getString("email");
                             //photo = userData.getString("photo");
 
+                            fullName = (fName+" "+lName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
-                            fullName = (fName+" "+lName);
-                            navUsername = (TextView) headerView.findViewById(R.id.profileNavUsrName);
-                            navUsername.setText(fName+" "+lName);
+                            navUsername = (TextView) headerView.findViewById(R.id.foundPageName);
                             navUsername.setText(fullName);
                             TextView navEmail;
-                            navEmail = (TextView) headerView.findViewById(R.id.profileNavEmail);
+                            navEmail = (TextView) headerView.findViewById(R.id.foundPageEmail);
                             navEmail.setText(email);
-
-                            TextView firstName = (TextView) findViewById(R.id.firstName);
-                            firstName.setText(fName);
-                            TextView lastName = (TextView) findViewById(R.id.lastName);
-                            lastName.setText(lName);
-                            TextView userName = (TextView) findViewById(R.id.userName);
-                            userName.setText(username);
-                            TextView addressTV = (TextView) findViewById(R.id.address);
-                            addressTV.setText(address);
-                            TextView emailTV = (TextView) findViewById(R.id.email);
-                            emailTV.setText(email);
 
                         }catch (JSONException e){
 
@@ -144,11 +124,6 @@ public class UserProfileActivity extends AppCompatActivity
                 });
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
-        context = getApplicationContext();
-        listView = (ListView) findViewById(R.id.petList);
-        adapter = new PetListAdapter(UserProfileActivity.this,petList);
-        listView.setAdapter(adapter);
-        getPetInfo();
     }
 
     @Override
@@ -164,7 +139,7 @@ public class UserProfileActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.user_profile, menu);
+        getMenuInflater().inflate(R.menu.found_page, menu);
         return true;
     }
 
@@ -182,7 +157,6 @@ public class UserProfileActivity extends AppCompatActivity
             startActivity(intent);
             this.finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -218,91 +192,39 @@ public class UserProfileActivity extends AppCompatActivity
         return true;
     }
 
-    public void addPet(View v){
-        Intent intent = new Intent(UserProfileActivity.this, CreatePetProfileActivity.class);
-        intent.putExtra(USER_ID,userID);
-        startActivity(intent);
-    }
+    public void SendRequest(){
+        StringRequest stringRequest = new StringRequest(JSON_URL,
+                new Response.Listener<String>() {
 
-    public void addEditUser(View v){
-        Intent intent = new Intent(UserProfileActivity.this, EditProfileActivity.class);
-        intent.putExtra(USER_ID,userID);
-        startActivity(intent);
-    }
-
-    public void editPet(View v){
-        Intent intent = new Intent(UserProfileActivity.this, EditPetProfile.class);
-        intent.putExtra(USER_ID,userID);
-        startActivity(intent);
-    }
-    public void getPetInfo(){
-        pDialog = new ProgressDialog(UserProfileActivity.this);
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET,GET_USER_PETS+userID,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        hidePDialog();
-//                        JSONParser jsonParser = new JSONParser(response);
-//                        jsonParser.parseJSON();
-//                        petList = jsonParser.getPets();
-//                        adapter.notifyDataSetChanged();
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        VolleyLog.d(TAG,"Error: " + error.getMessage());
-//                        Toast.makeText(UserProfileActivity.this,error.getMessage(), Toast.LENGTH_LONG).show();
-//                        hidePDialog();
-//                    }
-//               });
-//        AppController.getInstance().addToRequestQueue(stringRequest);
-        RequestQueue queue = Volley.newRequestQueue(context);
-        JsonObjectRequest petListReq = new JsonObjectRequest(Request.Method.GET,GET_USER_PETS+userID,null,
-                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i(TAG,response.toString());
-                        hidePDialog();
-                        try {
-                            JSONArray ra = response.getJSONArray("result");
-                                 for(int i=0; i<ra.length(); i++) {
-                                     JSONObject obj = ra.getJSONObject(i);
-                                     DataPet currentPet = new DataPet();
-                                     currentPet.SetPetName(obj.getString("name"));
-                                     currentPet.SetBreed(obj.getString("breed"));
-                                     currentPet.SetSpecies(obj.getString("species"));
-                                     petList.add(currentPet);
-                                 }
-                            }catch (JSONException e){
-                                e.printStackTrace();
-                            }
-                            adapter.notifyDataSetChanged();
+                    public void onResponse(String response) {
+                        JSONParser jsonParser = new JSONParser(response);
+                        jsonParser.parseJSON();
+                        lostList = jsonParser.getLostPets();
+                        mAdapter = new AdapterPet(lostList);
+                        mRecyclerView.setAdapter(mAdapter);
                     }
                 },
-                new Response.ErrorListener(){
+                new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error){
-                        VolleyLog.d(TAG,"Error: it didn't work");
-                        hidePDialog();
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(FoundPage.this,error.getMessage(),Toast.LENGTH_LONG).show();
                     }
-
                 });
-        AppController.getInstance().addToRequestQueue(petListReq);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
+    public void toLostPage(View v){
+        Intent intent = new Intent(this, MainScreenActivity.class);
+        intent.putExtra(USER_ID,userID);
+        startActivity(intent);
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
+
+    public void createFoundPost(View v){
+        Intent intent = new Intent(this, CreateAFoundPost.class);
+        intent.putExtra(USER_ID,userID);
+        startActivity(intent);
     }
+
 }
-

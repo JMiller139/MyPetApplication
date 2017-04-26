@@ -97,6 +97,18 @@
         <item>Entry 3</item>
     </string-array>
 
+    <string name="radius_label">Radius (in miles)</string>
+    <string name="radius_caption">The maximum distance from you that you would like
+        to see posts and get notifications from</string>
+    <string-array name="radius_options">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>50</item>
+        <item>150</item>
+    </string-array>
+
     <string-array name="list_preference_entry_values">
         <item>1</item>
         <item>2</item>
@@ -158,4 +170,15 @@
     <string name="address">123 Main Street \nRadford, VA\n 22421</string>
     <string name="email">email@email.com</string>
     <string name="blah">blah</string>
+    <string name="title_activity_main__tab_activity_1">MainActivity_TabActivity_1</string>
+    <string name="LostPageTitle">Lost Pets Page</string>
+    <string name="goToFoundPage">Go To Found Page</string>
+    <string name="lostPetsPage">Lost Pets Page</string>
+    <string name="foundPetsPage">Found Pets Page</string>
+    <string name="title_activity_found_page">FoundPage</string>
+    <string name="FoundPetsTitle">Create A Found A Post</string>
+    <string name="SelectAPhoto">Select A Photo</string>
+    <string name="createFoundButton">Create The Post</string>
+    <string name="Notes">Information about the pet</string>
+    <string name="notesas">Please enter any helpful information on the pet you have found</string>
 </resources>
