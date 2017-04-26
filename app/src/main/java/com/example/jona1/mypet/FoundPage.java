@@ -200,7 +200,7 @@ public class FoundPage extends AppCompatActivity
                     public void onResponse(String response) {
                         JSONParser jsonParser = new JSONParser(response);
                         jsonParser.parseJSON();
-                        lostList = jsonParser.getLostPets();
+                        //ostList = jsonParser.getLostPets();
                         mAdapter = new AdapterPet(lostList);
                         mRecyclerView.setAdapter(mAdapter);
                     }

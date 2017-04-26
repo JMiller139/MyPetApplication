@@ -31,8 +31,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
-import static com.example.jona1.mypet.EditProfileActivity.JSON_URL;
 //import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity
@@ -108,8 +106,6 @@ public class MainScreenActivity extends AppCompatActivity
                             //photo = userData.getString("photo");
                             Log.i(TAG,fName);
                             fullName = (fName+" "+lName);
-                            TextView tv = (TextView) findViewById(R.id.TVusername);
-                            tv.setText("Welcome back "+ fName);
                             View headerView = navigationView.getHeaderView(0);
                             TextView navUsername;
                             navUsername = (TextView) headerView.findViewById(R.id.mainNavUsrName);
@@ -132,11 +128,6 @@ public class MainScreenActivity extends AppCompatActivity
 
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.listLostPet);
-        mRecyclerView.setHasFixedSize(true);
-
-        mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
@@ -204,30 +195,34 @@ public class MainScreenActivity extends AppCompatActivity
         return true;
     }
 
-    public void SendRequest(){
-        StringRequest stringRequest = new StringRequest(JSON_URL,
-                new Response.Listener<String>() {
+//    public void SendRequest(){
+//        StringRequest stringRequest = new StringRequest(JSON_URL,
+//                new Response.Listener<String>() {
+//
+//                    @Override
+//                    public void onResponse(String response) {
+//                        JSONParser jsonParser = new JSONParser(response);
+//                        jsonParser.parseJSON();
+//                        lostList = jsonParser.getLostPets();
+//                        mAdapter = new AdapterPet(lostList);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(MainScreenActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//    }
 
-                    @Override
-                    public void onResponse(String response) {
-                        JSONParser jsonParser = new JSONParser(response);
-                        jsonParser.parseJSON();
-                        lostList = jsonParser.getLostPets();
-                        mAdapter = new AdapterPet(lostList);
-                        mRecyclerView.setAdapter(mAdapter);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainScreenActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+    public void goToFoundPage(View v){
+        Intent intent = new Intent(this, FoundPage.class);
+        intent.putExtra(USER_ID,userID);
+        startActivity(intent);
     }
-
-
 
 
 }

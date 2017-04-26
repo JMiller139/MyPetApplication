@@ -8,29 +8,56 @@
     tools:context="com.example.jona1.mypet.MainScreenActivity"
     tools:showIn="@layout/app_bar_main_screen">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listLostPet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
-
-
 
     <TextView
-        android:id="@+id/TVusername"
-        android:layout_width="125dp"
-        android:layout_height="87dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="84dp"
-        android:text="@string/emptyString"
-        android:gravity="center"
-        tools:ignore="RtlHardcoded"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/LostPageTitle"
+        android:textColor="@color/wallet_bright_foreground_holo_light"
+        android:textColorLink="@color/wallet_bright_foreground_holo_light"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/goToFoundButton"
+        android:layout_width="344dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="goToFoundPage"
+        android:text="@string/goToFoundPage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ScrollView
+        android:layout_width="343dp"
+        android:layout_height="396dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToFoundButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
