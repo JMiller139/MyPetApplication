@@ -118,7 +118,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void getUserInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getSettings.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/updateSettings.php?user_id="+userID,
                 new Response.Listener<String>() {
 
                     @Override
