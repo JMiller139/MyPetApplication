@@ -59,9 +59,7 @@ public class CreatePetProfileActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View v) {
-        if(v == buttonRegister){
-            addPetClicked();
-        }
+
     }
 
     public void addPetClicked(){

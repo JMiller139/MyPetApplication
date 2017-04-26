@@ -12,7 +12,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="0dp"
-        app:layout_constraintHorizontal_bias="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -192,9 +191,10 @@
                 android:id="@+id/createFoundButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/notesSection"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
+                android:onClick="createFoundPost"
                 android:text="@string/createFoundButton" />
 
         </RelativeLayout>

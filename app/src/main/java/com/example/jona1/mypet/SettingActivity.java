@@ -40,10 +40,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private Switch locationSwitch;
     private Spinner spinner;
 
-    private Button button4;
-
-    private final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/getSettings.php?user_id=" + userID;
-
+    private final String GET_SETTINGS_URL = "https://php.radford.edu/~team04/userRegistration/getSettings.php?user_id=" + userID;
+    private final String SET_SETTINGS_URL = "https://php.radford.edu/~team04/userRegistration/updateSettings.php?user_id=" + userID;
     // end register new user info
 
     @Override
@@ -52,20 +50,15 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_setting);
         getUserInfo();
 
-        notificationSwitch = (Switch) findViewById(R.id.changeRNumber);
-        locationSwitch = (Switch) findViewById(R.id.changePetName);
-        spinner = (Spinner) findViewById(R.id.changePetBreed);
+        notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
+        locationSwitch = (Switch) findViewById(R.id.locationSwitch);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
-        button4 = (Button) findViewById(R.id.savePetChanges);
-
-        button4.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == button4){
             registerUser();
-        }
     }
 
 
@@ -106,7 +99,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 data.put("location",params[1]);
                 data.put("radius",params[2]);
 
-                return  ruc.sendPostRequest(REGISTER_URL,data);
+                return  ruc.sendPostRequest(SET_SETTINGS_URL,data);
             }
         }
 
@@ -118,7 +111,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void getUserInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/updateSettings.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest(GET_SETTINGS_URL,
                 new Response.Listener<String>() {
 
                     @Override
@@ -143,14 +136,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(TAG_RESULT);
             JSONObject userData = result.getJSONObject(0);
-            notifications = (userData.getString(TAG_NOTIFICATIONS));
+            notifications = userData.getString(TAG_NOTIFICATIONS);
             location = userData.getString(TAG_LOCATION);
             radius = userData.getString(TAG_RADIUS);
 
             Log.i(TAG,notifications);
-            notificationSwitch = (Switch) findViewById(R.id.changeRNumber);
-            locationSwitch = (Switch) findViewById(R.id.changePetName);
-            spinner = (Spinner) findViewById(R.id.changePetBreed);
+            notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
+            locationSwitch = (Switch) findViewById(R.id.locationSwitch);
+            spinner = (Spinner) findViewById(R.id.spinner);
 
             if (notifications.equals("true")) {notificationSwitch.setChecked(true);}
             else {notificationSwitch.setChecked(true);}
