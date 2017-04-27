@@ -17,9 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -53,6 +51,7 @@ public class UserProfileActivity extends AppCompatActivity
     private String email = "";
     private String photo = "";
     private String userID;
+    private String petID;
     private RecyclerView mRecyclerView ;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -73,6 +72,7 @@ public class UserProfileActivity extends AppCompatActivity
 
 
         userID = "";
+        petID="";
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         if(b!=null){

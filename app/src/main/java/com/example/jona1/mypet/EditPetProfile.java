@@ -137,7 +137,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
                 data.put("bite_status",params[5]);
                 data.put("notes",params[6]);
 
-                return  ruc.sendPostRequest(REGISTER_URL+userID,data);
+                return  ruc.sendPostRequest(REGISTER_URL+userID+"&pet_id=1",data);
             }
         }
 
