@@ -1,6 +1,7 @@
 package com.example.jona1.mypet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private final String TAG= "test";
     String appBarNameDis;
     RequestQueue requestQueue;
-    String userID="1";
+    String userID="";
 
     // register new user info
 
@@ -47,7 +48,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updateUser.php?user_id=1";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updateUser.php?user_id=";
+    private static final String GET_INFO = "https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id=";
 
     // end register new user info
 
@@ -55,7 +57,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        getUserInfo();
+
 
         editTextEmail = (EditText) findViewById(R.id.changeEmail);
         editTextFname = (EditText) findViewById(R.id.changeFName);
@@ -65,6 +67,13 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         buttonRegister = (Button) findViewById(R.id.saveChangesButton);
 
         buttonRegister.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
+        getUserInfo();
     }
 
     @Override
@@ -114,7 +123,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 data.put("address",params[2]);
                 data.put("email",params[3]);
 
-                return  ruc.sendPostRequest(REGISTER_URL,data);
+                return  ruc.sendPostRequest(REGISTER_URL+userID,data);
             }
         }
 
@@ -126,7 +135,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     public void getUserInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getUserInfo.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest(GET_INFO+userID,
                 new Response.Listener<String>() {
 
                     @Override

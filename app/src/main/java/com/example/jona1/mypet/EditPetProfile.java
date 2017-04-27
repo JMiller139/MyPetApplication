@@ -1,6 +1,7 @@
 package com.example.jona1.mypet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
     private final String TAG= "test";
     String appBarNameDis;
     RequestQueue requestQueue;
-    String userID="1";
+    String userID="";
 
     // update new pet info
 
@@ -51,7 +52,8 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
 
     private Button buttonRegister;
 
-    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updatePet.php?user_id=1";
+    private static final String REGISTER_URL = "https://php.radford.edu/~team04/userRegistration/updatePet.php?user_id=";
+    private static final String GET_PET_INFO = "https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id=";
 
     // update new pet info
 
@@ -59,7 +61,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_pet_profile);
-        getUserInfo();
+
 
         editTextRNumber = (EditText) findViewById(R.id.changeRNumber);
         editTextname = (EditText) findViewById(R.id.changePetName);
@@ -72,6 +74,13 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
         buttonRegister = (Button) findViewById(R.id.savePetChanges);
 
         buttonRegister.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+        }
+        getPetInfo();
     }
 
     @Override
@@ -128,7 +137,7 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
                 data.put("bite_status",params[5]);
                 data.put("notes",params[6]);
 
-                return  ruc.sendPostRequest(REGISTER_URL,data);
+                return  ruc.sendPostRequest(REGISTER_URL+userID,data);
             }
         }
 
@@ -137,10 +146,10 @@ public class EditPetProfile extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    public void getUserInfo() {
+    public void getPetInfo() {
 
         requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest("https://php.radford.edu/~team04/userRegistration/getPetInfo.php?user_id="+userID,
+        StringRequest stringRequest = new StringRequest(GET_PET_INFO+userID,
                 new Response.Listener<String>() {
 
                     @Override
