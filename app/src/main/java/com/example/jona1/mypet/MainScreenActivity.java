@@ -174,6 +174,7 @@ public class MainScreenActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent intent = new Intent(this, MainScreenActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, UserProfileActivity.class);
@@ -184,6 +185,7 @@ public class MainScreenActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(this, SettingActivity.class);
+            intent.putExtra(USER_ID,userID);
             startActivity(intent);
         }
         else if (id == R.id.nav_inbox) {

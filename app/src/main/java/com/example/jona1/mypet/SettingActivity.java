@@ -1,6 +1,7 @@
 package com.example.jona1.mypet;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private static final String TAG_RADIUS = "radius";
     private final String TAG= "test";
     RequestQueue requestQueue;
-    String userID="1";
+    String userID;
 
     // register new user info
 
@@ -48,11 +49,20 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        getUserInfo();
+
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!=null){
+            userID = (String) b.get("USER_ID");
+            Log.i(TAG,userID);
+        }
 
         notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
         locationSwitch = (Switch) findViewById(R.id.locationSwitch);
         spinner = (Spinner) findViewById(R.id.spinner);
+
+        getUserInfo();
+
 
     }
 
@@ -70,10 +80,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         String radius = spinner.getSelectedItem().toString().trim().toLowerCase();
 
 
-        register(notifications,location,radius);
+        register(notifications,location,radius,userID);
     }
 
-    private void register(String notifications, String location, String radius) {
+    private void register(String notifications, String location, String radius, String userID) {
         class RegisterUser extends AsyncTask<String, Void, String> {
             private ProgressDialog loading;
             private RegisterUserClass ruc = new RegisterUserClass();
@@ -98,13 +108,14 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 data.put("notifications",params[0]);
                 data.put("location",params[1]);
                 data.put("radius",params[2]);
+                data.put("user_id",params[3]);
 
                 return  ruc.sendPostRequest(SET_SETTINGS_URL,data);
             }
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(notifications,location,radius);
+        ru.execute(notifications,location,radius,userID);
     }
 
 
@@ -116,6 +127,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
                     @Override
                     public void onResponse(String response) {
+                        Log.i(TAG,response);
                         showJSON(response);
                     }
                 },
@@ -131,24 +143,22 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         String notifications ;
         String location ;
         String radius ;
+        Log.i(TAG,response);
 
         try{
             JSONObject jsonObject = new JSONObject(response);
             JSONArray result = jsonObject.getJSONArray(TAG_RESULT);
             JSONObject userData = result.getJSONObject(0);
-            notifications = userData.getString(TAG_NOTIFICATIONS);
-            location = userData.getString(TAG_LOCATION);
+            notifications = userData.getString("push_notifications");
+            location = userData.getString("location_given");
             radius = userData.getString(TAG_RADIUS);
 
             Log.i(TAG,notifications);
-            notificationSwitch = (Switch) findViewById(R.id.notificationSwitch);
-            locationSwitch = (Switch) findViewById(R.id.locationSwitch);
-            spinner = (Spinner) findViewById(R.id.spinner);
 
-            if (notifications.equals("true")) {notificationSwitch.setChecked(true);}
-            else {notificationSwitch.setChecked(true);}
+            if (notifications.equals("1")) {notificationSwitch.setChecked(true);}
+            else {notificationSwitch.setChecked(false);}
 
-            if (location.equals("true")) {locationSwitch.setChecked(true);}
+            if (location.equals("1")) {locationSwitch.setChecked(true);}
             else {locationSwitch.setChecked(false);}
 
             if (radius.equals("1")) {spinner.setSelection(0);}

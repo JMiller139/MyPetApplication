@@ -17,7 +17,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -149,6 +151,7 @@ public class UserProfileActivity extends AppCompatActivity
         adapter = new PetListAdapter(UserProfileActivity.this,petList);
         listView.setAdapter(adapter);
         getPetInfo();
+
     }
 
     @Override
